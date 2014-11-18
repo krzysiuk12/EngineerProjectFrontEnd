@@ -22,4 +22,9 @@ public class GoogleManagementService extends BaseService {
         return (Location) parseResponse(rs);
     }
 
+    public Location getLocationFromIpAddress(String token) throws Exception {
+        LocationResponseSerializer rs = executeHttpGetRequest(ServerPaths.getLocationFromIpAddressRequestPath(), token, LocationResponseSerializer.class);
+        return (Location) parseResponse(rs);
+    }
+
 }

@@ -92,6 +92,10 @@ public class ServerPaths {
         return new StringBuilder(GEOCODE_GOOGLE_SERVER_PATH).append("/coordinates").toString();
     }
 
+    public static String getLocationFromIpAddressRequestPath() {
+        return new StringBuilder(GEOCODE_GOOGLE_SERVER_PATH).append("/ip").toString();
+    }
+
     public static String getLocationsInScopeRequestPath(double latitude, double longitude) {
         return new StringBuilder(COORDINATES_SERVER_PATH).append("/").append(latitude).append("/").append(longitude).append("/locations").toString();
     }
