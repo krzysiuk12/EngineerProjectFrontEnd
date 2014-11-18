@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/pages/templates/EmptyTemplate.xhtml">
+
+    <ui:define name="NavbarCollapseContent">
+        <ui:include src="/pages/menus/StartMenu.xhtml"/>
+    </ui:define>
+
+    <ui:define name="MainContent">
+        <div class="jumbotron">
+            <div class="form-signin">
+                <h2 class="form-signin-header">#{p['LogInPage.Header']}</h2>
+
+                <div class="form-field-with-description">
+                    <h3>#{p['LogInPage.InputText.Login']}</h3>
+                    <h:inputText id="login" styleClass="form-control" value="#{logInBean.login}"/>
+                </div>
+                <div class="form-field-with-description">
+                    <h3>#{p['LogInPage.InputSecret.Password']}</h3>
+                    <h:inputSecret id="password" styleClass="form-control" value="#{logInBean.password}"/>
+                </div>
+                <h:commandButton styleClass="btn btn-lg btn-primary btn-block form-button"
+                                 value="#{p['LogInPage.Button.Label']}" action="#{logInBean.logInAction}"/>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

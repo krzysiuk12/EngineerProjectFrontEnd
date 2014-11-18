@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <h:graphicImage value="/resources/images/user_default.png"/>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.FirstName']}: </h4>
+                            <h:inputText id="userFirstName" styleClass="form-control" value="Jan" />
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.LastName']}: </h4>
+                            <h:inputText id="userLastName" styleClass="form-control" value="Kowalski" />
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Email']}: </h4>
+                            <h:inputText id="userEmail" styleClass="form-control" value="example@gmail.com" />
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.City']}: </h4>
+                            <h:inputText id="cityUser" styleClass="form-control" value="Krakow" />
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Country']}: </h4>
+                            <h:inputText id="countryUser" styleClass="form-control" value="Polska" />
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Description']}: </h4>
+                            <h:inputText id="userDescription" styleClass="form-control" value="I am very nice man" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

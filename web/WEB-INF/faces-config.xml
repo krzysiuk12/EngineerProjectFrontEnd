@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee 
+    http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+  
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>Index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>LogInPage</from-outcome>
+            <to-view-id>/pages/registration/LogInPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>SignInPage</from-outcome>
+            <to-view-id>/pages/registration/SignInPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MyPanelPage</from-outcome>
+            <to-view-id>/pages/user/MyPanelPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MyAccountPage</from-outcome>
+            <to-view-id>/pages/user/MyAccountPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>EditMyAccountPage</from-outcome>
+            <to-view-id>/pages/user/EditMyAccountPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ChangePasswordPage</from-outcome>
+            <to-view-id>/pages/user/ChangePasswordPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>MyPreferencesPage</from-outcome>
+            <to-view-id>/pages/user/MyPreferencesPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowLocationDescriptionPage</from-outcome>
+            <to-view-id>/pages/locations/ShowLocationDescriptionPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>AddLocationPage</from-outcome>
+            <to-view-id>/pages/locations/AddLocationPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowMyLocationsPage</from-outcome>
+            <to-view-id>/pages/locations/ShowMyLocationsPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowAllLocationsPage</from-outcome>
+            <to-view-id>/pages/locations/ShowAllLocationsPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>NewTripPage</from-outcome>
+            <to-view-id>/pages/trips/NewTripPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowTripsPage</from-outcome>
+            <to-view-id>/pages/trips/ShowTripsPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>

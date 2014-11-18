@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                template="/pages/templates/EmptyTemplate.xhtml">
+
+    <ui:define name="NavbarCollapseContent">
+        <ui:include src="/pages/menus/StartMenu.xhtml"/>
+    </ui:define>
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <h:graphicImage style="display: inline-block" value="/resources/images/Logo.png"/>
+                <h1 style="display: inline-block; font-size: 100px;">Tour trip</h1>
+                <p>Trip tour is web application which can help you plan your trip, add your favorite locations and share your memories and feeling with your friends.</p>
+                <div class="buttonList">
+                    <h:commandLink styleClass="firstButtonList btn btn-success btn-lg" value="#{p['Index.Buttons.LogIn.Label']}" action="#{mainPageBean.logInAction}"/>
+                    <h:commandLink styleClass="btn btn-info btn-lg" value="#{p['Index.Buttons.SignIn.Label']}" action="#{mainPageBean.signInAction}"/>
+                    <h:commandLink styleClass="btn btn-primary btn-lg" value="#{p['Index.Buttons.LearnMore.Label']}" action="#{mainPageBean.learnMoreAction}"/>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

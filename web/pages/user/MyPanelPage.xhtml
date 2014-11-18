@@ -1,0 +1,87 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="center-block">
+            <h1 class="center-block">#{p['MainPage.Header']}</h1>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">#{p['MainPage.Panel.MyTrips.Title']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                        </div>
+                        <button type="button" class="btn btn-default center-block">
+                            <span class="glyphicon glyphicon glyphicon-plane"></span> Go to My Trips
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">#{p['MainPage.Panel.MyMessages.Title']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                        </div>
+                        <button type="button" class="btn btn-default center-block">
+                            <span class="glyphicon glyphicon glyphicon-envelope"></span> Go to My Messages
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">#{p['MainPage.Panel.MyLocations.Title']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                        </div>
+                        <button type="button" class="btn btn-default center-block">
+                            <span class="glyphicon glyphicon glyphicon-user"></span>Go to My Locations
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">#{p['MainPage.Panel.TopRatedLocations.Title']}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                        </div>
+                        <button type="button" class="btn btn-default center-block">
+                            <span class="glyphicon glyphicon glyphicon-star-empty"></span> Go to Top Rated Locations
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

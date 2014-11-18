@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <h:graphicImage value="/resources/images/user_default.png"/>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.FirstName']}: </h4>
+                            <h2>Jan</h2>
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.LastName']}: </h4>
+                            <h2>Kowalski</h2>
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Email']}: </h4>
+                            <h2>exmaple@gmail.com</h2>
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.City']}: </h4>
+                            <h3>Krakow</h3>
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Country']}: </h4>
+                            <h3>Polska</h3>
+                        </div>
+                        <div class="user-desc">
+                            <h4>#{p['MyAccountPage.OutputText.Description']}: </h4>
+                            <h3>I am very nice user</h3>
+                        </div>
+                        <!--                        <ul class="row text-center location-desc-actions">
+                                                    <li><h:commandButton styleClass="btn btn-lg btn-success" value="#{p['ShowAllLocations.Button.Search']}"></h:commandButton></li>
+                                                    <li><h:commandButton styleClass="btn btn-lg btn-warning" value="#{p['ShowAllLocations.Button.ShowDescription']}"></h:commandButton></li>
+                                                    <li><h:commandButton styleClass="btn btn-lg btn-primary" value="#{p['ShowAllLocations.Button.ShowTopRated']}"></h:commandButton></li>
+                                                </ul>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

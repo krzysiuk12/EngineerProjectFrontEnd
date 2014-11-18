@@ -1,0 +1,44 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/pages/templates/EmptyTemplate.xhtml">
+
+    <ui:define name="NavbarCollapseContent">
+        <ui:include src="/pages/menus/StartMenu.xhtml"/>
+    </ui:define>
+
+    <ui:define name="MainContent">
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-6 col-lg-6">
+                    <h2 class="form-signin-header">#{p['SignInPage.Header']}</h2>
+
+                    <div class="inline-form">
+                        <h3>#{p['SignInPage.Login.Label']}</h3>
+                        <h:inputText id="login" styleClass="form-control" value="#{signInBean.login}"/>
+                    </div>
+                    <div class="inline-form">
+                        <h3>#{p['SignInPage.Email.Label']}</h3>
+                        <h:inputText id="email" styleClass="form-control" value="#{signInBean.email}"/>
+                    </div>
+                    <div class="inline-form">
+                        <h3>#{p['SignInPage.Password.Label']}</h3>
+                        <h:inputSecret id="password" styleClass="form-control" value="#{signInBean.password}"/>
+                    </div>
+                    <div class="inline-form">
+                        <h3>#{p['SignInPage.ConfirmPassword.Label']}</h3>
+                        <h:inputSecret id="passwordConfirmation" styleClass="form-control"
+                                       value="#{signInBean.passwordConfirmation}"/>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6" >
+                    <h:commandButton styleClass="btn btn-lg btn-success btn-block form-button form-signin-button"
+                                     value="#{p['SignInPage.Button.SignIn']}" action="#{logInBean.logInAction}"/>
+                    <h:commandButton styleClass="btn btn-lg btn-primary btn-block form-button form-signin-button"
+                                     value="#{p['SignInPage.Button.LogIn']}" action="#{logInBean.logInAction}"/>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

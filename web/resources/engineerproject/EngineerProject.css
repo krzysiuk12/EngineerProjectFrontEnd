@@ -1,0 +1,123 @@
+.logo {
+    height: 70px;
+    max-height: 70px;
+}
+
+.buttonList * {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+/*
+.form-signin {
+    max-width: 400px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #123456;
+}
+
+.container .form-signin .form-control {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.container .form-signin .form-signin-header {
+    margin-bottom: 15px;
+}*/
+
+.form-signin {
+    width: 330px;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .form-field-with-description .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin .form-button {
+    margin-top: 10px;
+}
+
+.form-signin-button {
+    width: 80%;
+}
+
+.inline-form > *{
+    display: inline-block;
+}
+
+ul.location-desc {
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+ul.location-desc li {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+ul.location-desc li h2 {
+    margin-top: 1px;
+}
+
+ul.location-desc li h4 {
+    margin-top: 0px;
+    margin-bottom: 1px;
+}
+
+ul.location-desc > :first-child {
+    margin-top: 0;
+}
+
+ul.location-desc > :last-child {
+    margin-bottom: 0;
+}
+
+ul.location-desc-actions {
+    list-style-type: none;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+ul.location-desc-actions li {
+    margin-top: 10px;
+    margin-top: 10px;
+}
+
+ul.location-desc-actions > :first-child {
+    margin-top: 0;
+}
+
+ul.location-desc-actions > :last-child {
+    margin-bottom: 0;
+}
+
+ul.location-desc-actions li input {
+    width: 100%;
+}
+
+.user-desc {
+}
+
+.user-desc > * {
+    display: inline-block;
+}

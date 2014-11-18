@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6">
+                        <m:map width="100%" latitude="50.061641" longitude="19.939369" enableScrollWheelZoom="true">
+                            <m:marker>
+                                <m:htmlInformationWindow htmlText="This is Cairo, Egypt"/>
+                            </m:marker>
+                        </m:map>
+                    </div>
+                    <div class="col-md-6 col-lg-6">
+                        <ul class="location-desc">
+                            <li>
+                                <h4>#{p['ShowLocationDescription.Name.Label']}</h4>
+                                <h2>Kościół Mariacki</h2>
+                            </li>
+                            <li>
+                                <h4>#{p['ShowLocationDescription.Rating.Label']}</h4>
+                                <h2><span class="label label-success">8.4</span></h2>
+                            </li>
+                            <li>
+                                <h4>#{p['ShowLocationDescription.Header.Address']}</h4>
+                                <h2>Plac Mariacki 5</h2>
+                                <h2>31-042 Kraków</h2>
+                            </li>
+                        </ul>
+                        <ul class="row text-center location-desc-actions">
+                            <li><h:outputLink styleClass="btn btn-lg btn-warning"
+                                              value="http://www.mariacki.com/index.php/pl/">#{p['ShowLocationDescription.Buttons.URL']}</h:outputLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <h2>#{p['ShowLocationDescription.Description']}</h2>
+                    <p>Kościół archiprezbiterialny pod wezwaniem Wniebowzięcia Najświętszej Maryi Panny w Krakowie, zwany także kościołem Mariackim, to jeden z największych i najważniejszych – obok Katedry Wawelskiej – kościołów Krakowa; jest to jeden z najsłynniejszych polskich zabytków. Kościół Najświętszej Maryi Panny, popularnie znany jako Mariacki, znajdujesię na rynku w Krakowie. Nie sposób go nie zauważyć, gdyż jest to potężna gotycka budowla, doskonale znana na całym świecie.
+
+                        Kościół był budowany od końca XIII wieku do początku wieku XV. Wcześniej, w jego miejscu, stała romańska świątynia. Od roku 1962 kościół nosi tytuł bazyliki mniejszej. Wedle Jana Długosza, pierwszy murowany kościół, w stylu romańskim, został wzniesiony w tym miejscu w latach 1221-1222 przez biskupa krakowskiego Iwo Odrowąża na miejscu wcześniejszej drewnianej budowli. Świątynia szybko jednak została zniszczona. Później, w latach 1355-1365, z fundacji Mikołaja Wierzynka wzniesiono dzisiejsze prezbiterium. Następnie w wyniku przebudowy z końca XIV wieku krakowski kościół Mariacki z halowego został przekształcony w bazylikowy (podniesiono środkową nawę, a także wyposażoną ją w okna w celu doświetlenia wnętrza). W połowie XV wieku świątynia została uszkodzona w wyniku trzęsienia ziemi. W tym samym stuleciu dobudowano boczne kaplice, a także podwyższoną jedną z wież (północną), aby mogła pełnić funkcję strażnicy.
+
+                        Kościół Mariacki jest doskonałym przykładem architektury gotyckiej w Polsce z trzynawowym korpusem. Front bazyliki zdobią dwie wieże o różnej wysokości, wyższa ma 81 metrów, niższa – 69 metrów. Z tej pierwszej, co godzinę grany jest Hejnał Mariacki.
+
+                        Kościół Mariacki w swym wnętrzu kryje prawdziwe perełki. Główną jest oczywiście ołtarz Wita Stwosza, który jest największym tego rodzaju ołtarzem w Europie (11 x 13 metrów, wysokość realistycznie oddanych postaci wynosi ok. 2,7 metrów). Powstał w latach 1477 – 1489, a ufundowany został przez mieszczaństwo Krakowa. Cała konstrukcja jest wykonana w drzewie dębowym, rzeźby zaś są z drzewa lipowego. W podstawie Ołtarza widać predellę z drzewem genealogicznym Chrystusa i Maryi. Otwarty ołtarz przedstawia tajemnice Radości Maryi (od Zwiastowania do Zesłania Ducha Świętego), w centrum zaś widzimy scenę Zaśnięcia Maryi Panny w otoczeniu Apostołów. Na szczycie mamy scenę Wniebowzięcia i Koronacji. Po zamknięciu skrzydeł szafy ukazuje się dwanaście scen Boleści Maryi.
+
+                        W XVIII wieku dokonano gruntownej przebudowy wnętrza kościoła Mariackiego w stylu późnego baroku. Z tego okresu pochodzi także późnobarokowa kruchta. Po likwidacji przykościelnego cmentarza na początku XIX wieku wokół świątyni powstał plac Mariacki. W ostatniej ćwierci XIX wieku przeprowadzono kolejną gruntowną przebudowę wnętrz, tym razem w stylu neogotyckim. Kościół Mariacki ozdobiły wówczas m.in. polichromie Jana Matejki, a także witraże Stanisława Wyspiańskiego i Józefa Mehoffera. Od lat 90 XX wieku do roku 2003 przeprowadzono gruntowną renowację świątyni, łącznie z wymianą dachu.
+
+                        Wieża wyższa kościoła, zwana Hejnalicą, ma 82 metry wysokości i nakryta jest gotyckim hełmem z 1478 roku. To właśnie z niej, przez okno na wysokości 54 metrów, grany jest co godzinę Hejnał Mariacki, który jest jednym z symboli Krakowa.
+
+                        W wieży niższej kościoła Mariackiego, o wysokości 69 m, którą nakryto późnorenesansowym hełmem z roku 1592, mieści się dzwonnica. Od frontu do świątyni prowadzi barokowa kruchta z połowy XVIII wieku, której kształt architektoniczny nawiązuje do Grobu Chrystusa.
+
+                        Nad kruchtą znajduje się witraż projektu Wyspiańskiego i Mehoffera. Od strony placu Mariackiego, przy wejściu do świątyni, znajduje się kuna, czyli tak zwana obręcz pokutników, którą niegdyś zakładana na głowy wyjątkowych grzeszników.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
