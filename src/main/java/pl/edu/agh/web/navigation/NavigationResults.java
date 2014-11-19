@@ -5,6 +5,8 @@ package pl.edu.agh.web.navigation;
  */
 public enum NavigationResults {
 
+    RELOAD_PAGE(""),
+
     INDEX("Index"),
     LOG_IN_PAGE("LogInPage"),
     SIGN_IN_PAGE("SignInPage"),

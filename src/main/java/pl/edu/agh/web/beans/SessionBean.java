@@ -1,7 +1,12 @@
 package pl.edu.agh.web.beans;
 
+import pl.edu.agh.domain.useraccounts.UserAccount;
+import pl.edu.agh.web.messages.BaseMessage;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Krzysztof Kicinger on 2014-10-19.
@@ -10,32 +15,41 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class SessionBean {
 
-    private String loggedUser = "Krzysztof Kicinger";
-    private String currentMainTab;
-    private String currentTab;
+    private UserAccount loggedUserAccount;
+    private String userToken;
+    protected List<BaseMessage> errorMessages = new ArrayList<>();
+    protected List<BaseMessage> infoMessages = new ArrayList<>();
 
-    public String getCurrentTab() {
-        return currentTab;
+
+    public UserAccount getLoggedUserAccount() {
+        return loggedUserAccount;
     }
 
-    public void setCurrentTab(String currentTab) {
-        this.currentTab = currentTab;
+    public void setLoggedUserAccount(UserAccount loggedUserAccount) {
+        this.loggedUserAccount = loggedUserAccount;
     }
 
-    public String getCurrentMainTab() {
-        return currentMainTab;
+    public String getUserToken() {
+        return userToken;
     }
 
-    public void setCurrentMainTab(String currentMainTab) {
-        this.currentMainTab = currentMainTab;
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
     }
 
-    public String getLoggedUser() {
-        return loggedUser;
+    public List<BaseMessage> getErrorMessages() {
+        return errorMessages;
     }
 
-    public void setLoggedUser(String loggedUser) {
-        this.loggedUser = loggedUser;
+    public void setErrorMessages(List<BaseMessage> errorMessages) {
+        this.errorMessages = errorMessages;
     }
 
+    public List<BaseMessage> getInfoMessages() {
+        return infoMessages;
+    }
+
+    public void setInfoMessages(List<BaseMessage> infoMessages) {
+        this.infoMessages = infoMessages;
+    }
 }

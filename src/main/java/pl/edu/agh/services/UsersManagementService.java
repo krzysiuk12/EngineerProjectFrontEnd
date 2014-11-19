@@ -1,5 +1,6 @@
 package pl.edu.agh.services;
 
+import org.springframework.stereotype.Service;
 import pl.edu.agh.domain.useraccounts.UserAccount;
 import pl.edu.agh.services.serializers.common.BaseResponseSerializer;
 import pl.edu.agh.services.serializers.users.UserRegistrationRequestSerializer;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by Krzysztof Kicinger on 2014-11-18.
  */
+@Service
 public class UsersManagementService extends BaseService {
 
     public boolean addNewUserAccount(String login, String password, String email, String firstName, String lastName) throws Exception {

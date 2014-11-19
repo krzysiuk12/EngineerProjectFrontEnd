@@ -1,6 +1,6 @@
 package pl.edu.agh.exceptions.response;
 
-import pl.edu.agh.services.serializers.common.ErrorMessages;
+import pl.edu.agh.web.messages.ErrorMessages;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,9 @@
-package pl.edu.agh.services.serializers.common;
+package pl.edu.agh.web.messages;
 
 /**
  * Created by Krzysztof Kicinger on 2014-11-15.
  */
-public enum ErrorMessages {
+public enum ErrorMessages implements BaseMessage {
 
     INVALID_TOKEN,
     INVALID_LOGIN,
@@ -37,4 +37,8 @@ public enum ErrorMessages {
 
     SERVER_SIDE_ERROR;
 
+    @Override
+    public String getMessageKey() {
+        return name();
+    }
 }

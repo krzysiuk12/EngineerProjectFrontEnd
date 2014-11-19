@@ -1,5 +1,11 @@
 package pl.edu.agh.web.beans.registration;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import pl.edu.agh.services.SessionManagementService;
+import pl.edu.agh.tools.StringTools;
+import pl.edu.agh.web.beans.common.BaseBean;
+import pl.edu.agh.web.messages.FormValidationErrorMessages;
 import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
@@ -11,8 +17,11 @@ import java.io.Serializable;
  */
 @ManagedBean(name = "logInBean")
 @ViewScoped
-public class LogInBean implements Serializable {
+@Component
+public class LogInBean extends BaseBean implements Serializable {
 
+    @Autowired
+    private SessionManagementService sessionManagementService;
     private String login;
     private String password;
 
@@ -32,8 +41,32 @@ public class LogInBean implements Serializable {
         this.password = password;
     }
 
+    public SessionManagementService getSessionManagementService() {
+        return sessionManagementService;
+    }
+
+    public void setSessionManagementService(SessionManagementService sessionManagementService) {
+        this.sessionManagementService = sessionManagementService;
+    }
+
     public String logInAction() {
-        //TODO: Validation
-        return NavigationResults.MY_PANEL_PAGE.getNavigation();
+        refreshPageData();
+        if(StringTools.isNullOrEmpty(getLogin())) {
+            addErrorMessage(FormValidationErrorMessages.LOGIN_IS_REQUIRED);
+        }
+        if(StringTools.isNullOrEmpty(getPassword())) {
+            addErrorMessage(FormValidationErrorMessages.PASSWORD_IS_REQUIRED);
+        }
+        if(!isErrorMessageEmpty()) {
+            return NavigationResults.RELOAD_PAGE.getNavigation();
+        }
+
+        String token = null;
+        try {
+            getSessionBean().setUserToken(getSessionManagementService().loginUser(getLogin(), getPassword(), getSessionBean().getUserToken()));
+        } catch(Exception ex) {
+            processRequestException(ex);
+        }
+        return tryToNavigate(NavigationResults.MY_PANEL_PAGE);
     }
 }

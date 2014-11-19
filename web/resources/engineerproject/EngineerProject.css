@@ -121,3 +121,12 @@ ul.location-desc-actions li input {
 .user-desc > * {
     display: inline-block;
 }
+
+.right-bullet {
+    margin-right: 10px;
+}
+
+.inputFieldError {
+    border-color: red;
+    border-width: 2px;
+}

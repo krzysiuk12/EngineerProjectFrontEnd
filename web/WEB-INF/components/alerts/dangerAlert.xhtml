@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+
+<ui:composition>
+    <h:panelGroup rendered="#{rendered}">
+        <div class="alert alert-danger alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+            <ui:repeat value="#{errorMessagesList}" var="error">
+                <div><span class="glyphicon glyphicon-remove-circle" style="margin-right: 15px"></span>#{m[error.messageKey]}</div>
+            </ui:repeat>
+        </div>
+    </h:panelGroup>
+</ui:composition>
+</html>

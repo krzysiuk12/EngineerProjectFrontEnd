@@ -1,5 +1,9 @@
 package pl.edu.agh.web.beans.menus;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import pl.edu.agh.services.SessionManagementService;
+import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
@@ -10,7 +14,11 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "mainPageMenuBean")
 @SessionScoped
-public class MainPageMenuBean {
+@Component
+public class MainPageMenuBean extends BaseBean {
+
+    @Autowired
+    private SessionManagementService sessionManagementService;
 
     public String homeAction() {
         return NavigationResults.MY_PANEL_PAGE.getNavigation();
@@ -57,6 +65,13 @@ public class MainPageMenuBean {
     }
 
     public String logoutAction() {
-        return NavigationResults.INDEX.getNavigation();
+        refreshPageData();
+        try {
+            sessionManagementService.logoutUser(getSessionBean().getUserToken());
+            getSessionBean().setUserToken(null);
+        } catch(Exception ex) {
+            processRequestException(ex);
+        }
+        return tryToNavigate(NavigationResults.INDEX);
     }
 }

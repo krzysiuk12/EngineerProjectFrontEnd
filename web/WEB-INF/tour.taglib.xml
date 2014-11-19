@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE facelet-taglib PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+        "http://java.sun.com/dtd/facelet-taglib_1_0.dtd">
+<facelet-taglib
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd"
+        version="2.0">
+    <namespace>http://tourtrip.com/facelets</namespace>
+    <tag>
+        <tag-name>dangerAlert</tag-name>
+        <source>components/alerts/dangerAlert.xhtml</source>
+        <attribute>
+            <name>errorMessagesList</name>
+            <type>java.util.List</type>
+        </attribute>
+        <attribute>
+            <name>rendered</name>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>inputText</tag-name>
+        <source>components/forms/inputText.xhtml</source>
+        <attribute>
+            <name>id</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>label</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>error</name>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>inputSecret</tag-name>
+        <source>components/forms/inputSecret.xhtml</source>
+        <attribute>
+            <name>id</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>label</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>value</name>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
+            <name>error</name>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+</facelet-taglib>

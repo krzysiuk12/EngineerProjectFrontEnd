@@ -21,6 +21,7 @@
         <gmaps.version>3.0.0</gmaps.version>
         <spring.version>4.0.5.RELEASE</spring.version>
         <jackson.version>1.9.13</jackson.version>
+        <aspectj.version>1.8.0</aspectj.version>
     </properties>
 
     <repositories>
@@ -75,6 +76,16 @@
             <groupId>org.codehaus.jackson</groupId>
             <artifactId>jackson-mapper-asl</artifactId>
             <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjtools</artifactId>
+            <version>${aspectj.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjrt</artifactId>
+            <version>${aspectj.version}</version>
         </dependency>
     </dependencies>
 

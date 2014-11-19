@@ -24,6 +24,7 @@ public class MainPageBean implements Serializable {
 
     public String learnMoreAction() throws Exception {
         new LocationsManagementService().getAllLocations("SYSTEM");
+        //new Location
         return NavigationResults.MY_PANEL_PAGE.getNavigation();
     }
 

@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:trip="http://tourtrip.com/facelets"
                 template="/pages/templates/EmptyTemplate.xhtml">
 
     <ui:define name="NavbarCollapseContent">
@@ -9,17 +10,11 @@
 
     <ui:define name="MainContent">
         <div class="jumbotron">
+            <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
             <div class="form-signin">
                 <h2 class="form-signin-header">#{p['LogInPage.Header']}</h2>
-
-                <div class="form-field-with-description">
-                    <h3>#{p['LogInPage.InputText.Login']}</h3>
-                    <h:inputText id="login" styleClass="form-control" value="#{logInBean.login}"/>
-                </div>
-                <div class="form-field-with-description">
-                    <h3>#{p['LogInPage.InputSecret.Password']}</h3>
-                    <h:inputSecret id="password" styleClass="form-control" value="#{logInBean.password}"/>
-                </div>
+                <trip:inputText label="#{p['LogInPage.InputText.Login']}" value="#{logInBean.login}" error="false" />
+                <trip:inputSecret label="#{p['LogInPage.InputSecret.Password']}" value="#{logInBean.password}" error="false" />
                 <h:commandButton styleClass="btn btn-lg btn-primary btn-block form-button"
                                  value="#{p['LogInPage.Button.Label']}" action="#{logInBean.logInAction}"/>
             </div>

@@ -1,5 +1,7 @@
 package pl.edu.agh.services.serializers.common;
 
+import pl.edu.agh.web.messages.ErrorMessages;
+
 import java.util.List;
 
 /**
