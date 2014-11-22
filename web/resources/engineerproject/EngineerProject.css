@@ -3,28 +3,16 @@
     max-height: 70px;
 }
 
+.noData {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
 .buttonList * {
     display: inline-block;
     margin-left: 5px;
     margin-right: 5px;
 }
-
-/*
-.form-signin {
-    max-width: 400px;
-    padding: 15px;
-    margin: 0 auto;
-    background-color: #123456;
-}
-
-.container .form-signin .form-control {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.container .form-signin .form-signin-header {
-    margin-bottom: 15px;
-}*/
 
 .form-signin {
     width: 330px;

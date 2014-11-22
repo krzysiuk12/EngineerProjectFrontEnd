@@ -7,23 +7,35 @@
     <ui:define name="MainContent">
         <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
         <trip:infoAlert infoMessagesList="#{logInBean.infoMessages}" rendered="#{!logInBean.infoMessageEmpty}"/>
+
         <div class="center-block">
             <h1 class="center-block">#{p['MainPage.Header']}</h1>
         </div>
         <div class="row">
             <div class="col-md-6">
-                <div class="panel panel-success">
+                <div class="panel panel-success" >
                     <div class="panel-heading">
                         <h3 class="panel-title">#{p['MainPage.Panel.MyTrips.Title']}</h3>
                     </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
-                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
-                            </ui:repeat>
-                        </div>
-                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
-                            <span class="glyphicon glyphicon-plane" style="margin-right: 15px"></span>#{p['MainPage.Panel.MyTrips.Button']}
+                    <div class="panel-body text-center">
+                        <h:panelGroup rendered="#{myPanelBean.myTripsListRendered}">
+                            <div class="list-group">
+                                <ui:repeat value="#{myPanelBean.myTrips}" var="myTrip">
+                                    <h:commandLink class="list-group-item text-left" action="#{myPanelBean.goToMyTripsAction(myTrip.id)}">
+                                        <span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{myTrip.name}
+                                    </h:commandLink>
+                                </ui:repeat>
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{!myPanelBean.myTripsListRendered}">
+                            <div style="margin-top: 35px; margin-bottom: 35px">
+                                <h:outputText value="#{p['MainPage.Panel.MyTrips.NoData']}" />
+                            </div>
+                        </h:panelGroup>
+                        <h:commandLink type="button" class="btn btn-default center-block"
+                                       action="#{myPanelBean.goToTopRatedLocationsAction}">
+                        <span class="glyphicon glyphicon-plane"
+                              style="margin-right: 15px"></span>#{p['MainPage.Panel.MyTrips.Button']}
                         </h:commandLink>
                     </div>
                 </div>
@@ -33,14 +45,26 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">#{p['MainPage.Panel.NewestLocations.Title']}</h3>
                     </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
-                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
-                            </ui:repeat>
-                        </div>
-                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
-                            <span class="glyphicon glyphicon-time" style="margin-right: 15px"></span>#{p['MainPage.Panel.NewestLocations.Button']}
+                    <div class="panel-body text-center">
+                        <h:panelGroup rendered="#{myPanelBean.newestLocationsListRendered}">
+                            <div class="list-group">
+                                <ui:repeat value="#{myPanelBean.newestLocations}" var="newestLoc">
+                                    <h:commandLink class="list-group-item text-left" action="#{myPanelBean.goToLocationDescriptionAction(newestLoc.id)}"><span
+                                            class="glyphicon glyphicon-globe"
+                                            style="margin-right: 15px"></span>#{newestLoc.name}
+                                    </h:commandLink>
+                                </ui:repeat>
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{!myPanelBean.newestLocationsListRendered}">
+                            <div style="margin-top: 35px; margin-bottom: 35px">
+                                <h:outputText value="#{p['MainPage.Panel.NewestLocations.NoData']}" />
+                            </div>
+                        </h:panelGroup>
+                        <h:commandLink type="button" class="btn btn-default center-block"
+                                       action="#{myPanelBean.goToTopRatedLocationsAction}">
+                        <span class="glyphicon glyphicon-time"
+                              style="margin-right: 15px"></span>#{p['MainPage.Panel.NewestLocations.Button']}
                         </h:commandLink>
                     </div>
                 </div>
@@ -53,14 +77,26 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">#{p['MainPage.Panel.MyLocations.Title']}</h3>
                     </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
-                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
-                            </ui:repeat>
-                        </div>
-                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
-                            <span class=" glyphicon glyphicon-user" style="margin-right: 15px"></span>#{p['MainPage.Panel.MyLocations.Button']}
+                    <div class="panel-body text-center">
+                        <h:panelGroup rendered="#{myPanelBean.privateLocationsListRendered}">
+                            <div class="list-group">
+                                <ui:repeat value="#{myPanelBean.privateLocations}" var="privateLoc">
+                                    <h:commandLink class="list-group-item text-left" action="#{myPanelBean.goToLocationDescriptionAction(privateLoc.id)}"><span
+                                            class="glyphicon glyphicon-globe"
+                                            style="margin-right: 15px"></span>#{privateLoc.name}
+                                    </h:commandLink>
+                                </ui:repeat>
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{!myPanelBean.privateLocationsListRendered}">
+                            <div style="margin-top: 35px; margin-bottom: 35px">
+                                <h:outputText value="#{p['MainPage.Panel.MyLocations.NoData']}" />
+                            </div>
+                        </h:panelGroup>
+                        <h:commandLink type="button" class="btn btn-default center-block"
+                                       action="#{myPanelBean.goToTopRatedLocationsAction}">
+                        <span class=" glyphicon glyphicon-user"
+                              style="margin-right: 15px"></span>#{p['MainPage.Panel.MyLocations.Button']}
                         </h:commandLink>
                     </div>
                 </div>
@@ -72,14 +108,26 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">#{p['MainPage.Panel.TopRatedLocations.Title']}</h3>
                     </div>
-                    <div class="panel-body">
-                        <div class="list-group">
-                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
-                                <h:commandLink class="list-group-item" action="#{myPanelBean.goToLocationDescription(topRatedLoc.id)}"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</h:commandLink>
-                            </ui:repeat>
-                        </div>
-                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
-                            <span class="glyphicon glyphicon-star-empty" style="margin-right: 15px"></span>#{p['MainPage.Panel.TopRatedLocations.Button']}
+                    <div class="panel-body text-center">
+                        <h:panelGroup rendered="#{myPanelBean.topRatedLocationsListRendered}">
+                            <div class="list-group">
+                                <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
+                                    <h:commandLink class="list-group-item text-left"
+                                                   action="#{myPanelBean.goToLocationDescriptionAction(topRatedLoc.id)}"><span
+                                            class="glyphicon glyphicon-globe"
+                                            style="margin-right: 15px"></span>#{topRatedLoc.name}</h:commandLink>
+                                </ui:repeat>
+                            </div>
+                        </h:panelGroup>
+                        <h:panelGroup rendered="#{!myPanelBean.topRatedLocationsListRendered}">
+                            <div style="margin-top: 35px; margin-bottom: 35px">
+                                <h:outputText value="#{p['MainPage.Panel.TopRatedLocations.NoData']}" />
+                            </div>
+                        </h:panelGroup>
+                        <h:commandLink type="button" class="btn btn-default center-block"
+                                       action="#{myPanelBean.goToTopRatedLocationsAction}">
+                        <span class="glyphicon glyphicon-star-empty"
+                              style="margin-right: 15px"></span>#{p['MainPage.Panel.TopRatedLocations.Button']}
                         </h:commandLink>
                     </div>
                 </div>

@@ -1,9 +1,7 @@
 package pl.edu.agh.web.beans.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.domain.locations.Location;
-import pl.edu.agh.services.DataCacheService;
+import pl.edu.agh.domain.trips.Trip;
 import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.navigation.NavigationResults;
 
@@ -16,22 +14,40 @@ import java.util.List;
  */
 @ManagedBean(name = "myPanelBean")
 @ViewScoped
-@Component
 public class MyPanelBean extends BaseBean {
 
-    @Autowired
-    private DataCacheService dataCacheService;
+    private static final int MAX_PANEL_LIST_DATA = 3;
 
-    public DataCacheService getDataCacheService() {
-        return dataCacheService;
-    }
-
-    public void setDataCacheService(DataCacheService dataCacheService) {
-        this.dataCacheService = dataCacheService;
+    public List<Location> getNewestLocations() {
+        return getPanelData(getSessionBean().getDataCacheService().getNewestLocations());
     }
 
     public List<Location> getTopRatedLocations() {
-        return dataCacheService.getThreeMostRatedLocations();
+        return getPanelData(getSessionBean().getDataCacheService().getTopRatedLocations());
+    }
+
+    public List<Location> getPrivateLocations() {
+        return getPanelData(getSessionBean().getDataCacheService().getPrivateLocations());
+    }
+
+    public List<Trip> getMyTrips() {
+        return getTripPanelData(getSessionBean().getDataCacheService().getMyTrips());
+    }
+
+    public boolean isNewestLocationsListRendered() {
+        return !getNewestLocations().isEmpty();
+    }
+
+    public boolean isTopRatedLocationsListRendered() {
+        return !getTopRatedLocations().isEmpty();
+    }
+
+    public boolean isPrivateLocationsListRendered() {
+        return !getPrivateLocations().isEmpty();
+    }
+
+    public boolean isMyTripsListRendered() {
+        return !getMyTrips().isEmpty();
     }
 
     public String goToTopRatedLocationsAction() {
@@ -44,9 +60,27 @@ public class MyPanelBean extends BaseBean {
         return tryToNavigate(NavigationResults.SHOW_ALL_LOCATIONS_PAGE);
     }
 
-    public String goToLocationDescription(Long id) {
+    public String goToMyTripsAction() {
+        refreshPageData();
+        return tryToNavigate(NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE);
+    }
+
+    public String goToLocationDescriptionAction(Long id) {
         refreshPageData();
         getSessionBean().setSelectedLocationId(id);
         return tryToNavigate(NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE);
     }
+
+    public String goToTripDescriptionAction(Long id) {
+     return tryToNavigate(NavigationResults.LOG_IN_PAGE);
+    }
+
+    private List<Location> getPanelData(List<Location> locationLists) {
+        return locationLists.size() > MAX_PANEL_LIST_DATA ? locationLists.subList(0, MAX_PANEL_LIST_DATA) : locationLists;
+    }
+
+    private List<Trip> getTripPanelData(List<Trip> tripList) {
+        return tripList.size() > MAX_PANEL_LIST_DATA ? tripList.subList(0, MAX_PANEL_LIST_DATA) : tripList;
+    }
+
 }
