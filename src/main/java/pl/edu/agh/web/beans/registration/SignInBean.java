@@ -11,14 +11,14 @@ import pl.edu.agh.web.messages.InfoMessages;
 import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 
 /**
  * Created by Krzysztof Kicinger on 2014-10-19.
  */
 @ManagedBean(name = "signInBean")
-@SessionScoped
+@RequestScoped
 @Component
 public class SignInBean extends BaseBean implements Serializable {
 

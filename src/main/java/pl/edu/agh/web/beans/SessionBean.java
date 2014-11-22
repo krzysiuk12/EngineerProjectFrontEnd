@@ -19,7 +19,8 @@ public class SessionBean {
     private String userToken;
     protected List<BaseMessage> errorMessages = new ArrayList<>();
     protected List<BaseMessage> infoMessages = new ArrayList<>();
-
+    protected Long selectedLocationId;
+    protected Long selectedTripId;
 
     public UserAccount getLoggedUserAccount() {
         return loggedUserAccount;
@@ -52,4 +53,21 @@ public class SessionBean {
     public void setInfoMessages(List<BaseMessage> infoMessages) {
         this.infoMessages = infoMessages;
     }
+
+    public Long getSelectedLocationId() {
+        return selectedLocationId;
+    }
+
+    public void setSelectedLocationId(Long selectedLocationId) {
+        this.selectedLocationId = selectedLocationId;
+    }
+
+    public Long getSelectedTripId() {
+        return selectedTripId;
+    }
+
+    public void setSelectedTripId(Long selectedTripId) {
+        this.selectedTripId = selectedTripId;
+    }
+
 }

@@ -1,6 +1,9 @@
 package pl.edu.agh.web.beans.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import pl.edu.agh.exceptions.response.FormValidationError;
+import pl.edu.agh.services.DataCacheService;
 import pl.edu.agh.web.beans.ApplicationBean;
 import pl.edu.agh.web.beans.SessionBean;
 import pl.edu.agh.web.messages.BaseMessage;
@@ -15,14 +18,18 @@ import java.util.List;
 /**
  * Created by Krzysztof Kicinger on 2014-11-19.
  */
-public abstract class BaseBean {
+@Component
+public class BaseBean {
 
+    @Autowired
+    protected DataCacheService dataCacheService;
     private SessionBean sessionBean;
     private ApplicationBean applicationBean;
 
     public void refreshPageData() {
         getSessionBean().setErrorMessages(new ArrayList<>());
         getSessionBean().setInfoMessages(new ArrayList<>());
+        dataCacheService.refreshRequestData();
     }
 
     public String tryToNavigate(NavigationResults navigationResults) {
@@ -35,10 +42,11 @@ public abstract class BaseBean {
     }
 
     public void processRequestException(Exception ex) {
+        System.out.println(ex);
         if (ex instanceof FormValidationError) {
             addErrorMessage(((FormValidationError) ex).getErrorMessages());
         } else if (ex instanceof FormValidationError) {
-            addErrorMessage(ResponseErrorMessages.ZERO_RESULTS_RETURNED);
+            //addErrorMessage(ResponseErrorMessages.ZERO_RESULTS_RETURNED);
         } else if (ex instanceof FormValidationError) {
             addErrorMessage(ResponseErrorMessages.ACCESS_DENIED);
         } else if (ex instanceof FormValidationError) {
@@ -48,7 +56,13 @@ public abstract class BaseBean {
         }
     }
 
+    public DataCacheService getDataCacheService() {
+        return dataCacheService;
+    }
 
+    public void setDataCacheService(DataCacheService dataCacheService) {
+        this.dataCacheService = dataCacheService;
+    }
 
     //<editor-fold desc="Getters and Setters">
     public SessionBean getSessionBean() {
@@ -88,7 +102,7 @@ public abstract class BaseBean {
     }
 
     public boolean isInfoMessageEmpty() {
-        return !getInfoMessages().isEmpty();
+        return getInfoMessages().isEmpty();
     }
 
     public void addErrorMessage(BaseMessage message) {

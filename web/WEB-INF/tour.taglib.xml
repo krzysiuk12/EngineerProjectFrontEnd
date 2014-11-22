@@ -21,6 +21,18 @@
         </attribute>
     </tag>
     <tag>
+        <tag-name>infoAlert</tag-name>
+        <source>components/alerts/infoAlert.xhtml</source>
+        <attribute>
+            <name>infoMessagesList</name>
+            <type>java.util.List</type>
+        </attribute>
+        <attribute>
+            <name>rendered</name>
+            <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+    <tag>
         <tag-name>inputText</tag-name>
         <source>components/forms/inputText.xhtml</source>
         <attribute>
@@ -58,6 +70,14 @@
         <attribute>
             <name>error</name>
             <type>java.lang.Boolean</type>
+        </attribute>
+    </tag>
+    <tag>
+        <tag-name>outputLabel</tag-name>
+        <source>components/view/outputLabel.xhtml</source>
+        <attribute>
+            <name>label</name>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
 </facelet-taglib>

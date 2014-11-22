@@ -10,32 +10,32 @@
             <div class="jumbotron">
                 <div class="row">
                     <div class="col-md-4 col-lg-4">
-                        <h:graphicImage value="/resources/images/user_default.png"/>
+                        <h:graphicImage value="/resources/images/UserDefault.png"/>
                     </div>
                     <div class="col-md-8 col-lg-8">
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.FirstName']}: </h4>
-                            <h:inputText id="userFirstName" styleClass="form-control" value="Jan" />
+                            <h:inputText id="userFirstName" styleClass="form-control" value="#{editMyAccountBean.userAccount.individual.firstName}" />
                         </div>
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.LastName']}: </h4>
-                            <h:inputText id="userLastName" styleClass="form-control" value="Kowalski" />
+                            <h:inputText id="userLastName" styleClass="form-control" value="#{editMyAccountBean.userAccount.individual.lastName}" />
                         </div>
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.Email']}: </h4>
-                            <h:inputText id="userEmail" styleClass="form-control" value="example@gmail.com" />
+                            <h:inputText id="userEmail" styleClass="form-control" value="#{editMyAccountBean.userAccount.email}" />
                         </div>
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.City']}: </h4>
-                            <h:inputText id="cityUser" styleClass="form-control" value="Krakow" />
+                            <h:inputText id="cityUser" styleClass="form-control" value="#{editMyAccountBean.userAccount.individual.city}" />
                         </div>
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.Country']}: </h4>
-                            <h:inputText id="countryUser" styleClass="form-control" value="Polska" />
+                            <h:inputText id="countryUser" styleClass="form-control" value="#{editMyAccountBean.userAccount.individual.country}" />
                         </div>
                         <div class="user-desc">
                             <h4>#{p['MyAccountPage.OutputText.Description']}: </h4>
-                            <h:inputText id="userDescription" styleClass="form-control" value="I am very nice man" />
+                            <h:inputText id="userDescription" styleClass="form-control" value="#{editMyAccountBean.userAccount.individual.description}" />
                         </div>
                     </div>
                 </div>

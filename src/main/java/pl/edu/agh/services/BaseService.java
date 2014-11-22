@@ -61,7 +61,7 @@ public class BaseService {
 
     private void testStatus(ResponseSerializer responseSerializer) throws ZeroResultsException, AccessDeniedException, RequestDeniedException, UnknownErrorException, FormValidationError {
         switch(responseSerializer.getStatus()) {
-            case ZERO_RESULTS: throw new ZeroResultsException();
+            case ZERO_RESULTS: break;//throw new ZeroResultsException();
             case ACCESS_DENIED: throw new AccessDeniedException();
             case REQUEST_DENIED: throw new RequestDeniedException();
             case VALIDATION_ERROR: throw new FormValidationError(responseSerializer.getErrorMessage());

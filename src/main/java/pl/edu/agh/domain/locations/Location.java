@@ -3,6 +3,8 @@ package pl.edu.agh.domain.locations;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import pl.edu.agh.domain.common.implementation.UserVersionedBaseObject;
 
+import java.util.List;
+
 /**
  * Created by Krzysiu on 2014-05-25.
  */
@@ -37,6 +39,7 @@ public class Location extends UserVersionedBaseObject {
     private String url;
     private double rating;
     private Address address;
+    private List<Comment> comments;
 
     public Location() {
     }
@@ -111,5 +114,13 @@ public class Location extends UserVersionedBaseObject {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

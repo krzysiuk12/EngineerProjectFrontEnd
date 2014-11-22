@@ -2,6 +2,7 @@ package pl.edu.agh.web.beans.registration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.edu.agh.services.DataCacheService;
 import pl.edu.agh.services.SessionManagementService;
 import pl.edu.agh.tools.StringTools;
 import pl.edu.agh.web.beans.common.BaseBean;
@@ -49,6 +50,14 @@ public class LogInBean extends BaseBean implements Serializable {
         this.sessionManagementService = sessionManagementService;
     }
 
+    public DataCacheService getDataCacheService() {
+        return dataCacheService;
+    }
+
+    public void setDataCacheService(DataCacheService dataCacheService) {
+        this.dataCacheService = dataCacheService;
+    }
+
     public String logInAction() {
         refreshPageData();
         if(StringTools.isNullOrEmpty(getLogin())) {
@@ -64,6 +73,7 @@ public class LogInBean extends BaseBean implements Serializable {
         String token = null;
         try {
             getSessionBean().setUserToken(getSessionManagementService().loginUser(getLogin(), getPassword(), getSessionBean().getUserToken()));
+            dataCacheService.initializeCache(getSessionBean().getUserToken());
         } catch(Exception ex) {
             processRequestException(ex);
         }

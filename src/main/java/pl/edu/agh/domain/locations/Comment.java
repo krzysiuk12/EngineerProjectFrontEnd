@@ -3,6 +3,8 @@ package pl.edu.agh.domain.locations;
 import pl.edu.agh.domain.common.implementation.BaseObject;
 import pl.edu.agh.domain.useraccounts.UserAccount;
 
+import java.util.Date;
+
 /**
  * Created by Krzysiu on 2014-06-09.
  */
@@ -20,6 +22,7 @@ public class Comment extends BaseObject {
     private Location location;
     private Rating rating;
     private String comment;
+    private Date date;
 
     public Comment() {
     }
@@ -50,5 +53,12 @@ public class Comment extends BaseObject {
     }
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

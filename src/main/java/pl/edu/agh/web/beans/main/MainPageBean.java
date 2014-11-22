@@ -1,6 +1,7 @@
 package pl.edu.agh.web.beans.main;
 
-import pl.edu.agh.services.LocationsManagementService;
+import org.springframework.stereotype.Component;
+import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
@@ -12,20 +13,17 @@ import java.io.Serializable;
  */
 @ManagedBean(name = "mainPageBean")
 @SessionScoped
-public class MainPageBean implements Serializable {
+@Component
+public class MainPageBean extends BaseBean implements Serializable {
 
     public String logInAction() {
+        refreshPageData();
         return NavigationResults.LOG_IN_PAGE.getNavigation();
     }
 
     public String signInAction() {
+        refreshPageData();
         return NavigationResults.SIGN_IN_PAGE.getNavigation();
-    }
-
-    public String learnMoreAction() throws Exception {
-        new LocationsManagementService().getAllLocations("SYSTEM");
-        //new Location
-        return NavigationResults.MY_PANEL_PAGE.getNavigation();
     }
 
 }

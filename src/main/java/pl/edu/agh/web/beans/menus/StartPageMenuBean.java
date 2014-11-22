@@ -1,5 +1,6 @@
 package pl.edu.agh.web.beans.menus;
 
+import org.springframework.stereotype.Component;
 import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.navigation.NavigationResults;
 
@@ -11,6 +12,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "startPageMenuBean")
 @SessionScoped
+@Component
 public class StartPageMenuBean extends BaseBean {
 
     public String logInAction() {

@@ -15,30 +15,30 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
+                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
+                            </ui:repeat>
                         </div>
-                        <button type="button" class="btn btn-default center-block">
-                            <span class="glyphicon glyphicon glyphicon-plane"></span> Go to My Trips
-                        </button>
+                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
+                            <span class="glyphicon glyphicon-plane" style="margin-right: 15px"></span>#{p['MainPage.Panel.MyTrips.Button']}
+                        </h:commandLink>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h3 class="panel-title">#{p['MainPage.Panel.MyMessages.Title']}</h3>
+                        <h3 class="panel-title">#{p['MainPage.Panel.NewestLocations.Title']}</h3>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
+                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
+                            </ui:repeat>
                         </div>
-                        <button type="button" class="btn btn-default center-block">
-                            <span class="glyphicon glyphicon glyphicon-envelope"></span> Go to My Messages
-                        </button>
+                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
+                            <span class="glyphicon glyphicon-time" style="margin-right: 15px"></span>#{p['MainPage.Panel.NewestLocations.Button']}
+                        </h:commandLink>
                     </div>
                 </div>
             </div>
@@ -52,13 +52,13 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
+                                <a href="#" class="list-group-item"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</a>
+                            </ui:repeat>
                         </div>
-                        <button type="button" class="btn btn-default center-block">
-                            <span class="glyphicon glyphicon glyphicon-user"></span>Go to My Locations
-                        </button>
+                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
+                            <span class=" glyphicon glyphicon-user" style="margin-right: 15px"></span>#{p['MainPage.Panel.MyLocations.Button']}
+                        </h:commandLink>
                     </div>
                 </div>
             </div>
@@ -71,13 +71,13 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                            <a href="#" class="list-group-item">Morbi leo risus</a>
+                            <ui:repeat value="#{myPanelBean.topRatedLocations}" var="topRatedLoc">
+                                <h:commandLink class="list-group-item" action="#{myPanelBean.goToLocationDescription(topRatedLoc.id)}"><span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{topRatedLoc.name}</h:commandLink>
+                            </ui:repeat>
                         </div>
-                        <button type="button" class="btn btn-default center-block">
-                            <span class="glyphicon glyphicon glyphicon-star-empty"></span> Go to Top Rated Locations
-                        </button>
+                        <h:commandLink type="button" class="btn btn-default center-block" action="#{myPanelBean.goToTopRatedLocationsAction}">
+                            <span class="glyphicon glyphicon-star-empty" style="margin-right: 15px"></span>#{p['MainPage.Panel.TopRatedLocations.Button']}
+                        </h:commandLink>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,7 @@
     <ui:define name="MainContent">
         <div class="jumbotron">
             <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
+            <trip:infoAlert infoMessagesList="#{logInBean.infoMessages}" rendered="#{!logInBean.infoMessageEmpty}"/>
             <div class="form-signin">
                 <h2 class="form-signin-header">#{p['LogInPage.Header']}</h2>
                 <trip:inputText label="#{p['LogInPage.InputText.Login']}" value="#{logInBean.login}" error="false" />

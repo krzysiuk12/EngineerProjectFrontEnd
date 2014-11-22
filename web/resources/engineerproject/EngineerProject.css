@@ -94,8 +94,6 @@ ul.location-desc > :last-child {
 
 ul.location-desc-actions {
     list-style-type: none;
-    margin: 0 auto;
-    margin-top: 20%;
 }
 
 ul.location-desc-actions li {
@@ -104,7 +102,7 @@ ul.location-desc-actions li {
 }
 
 ul.location-desc-actions > :first-child {
-    margin-top: 0;
+    margin-top: 10px;
 }
 
 ul.location-desc-actions > :last-child {
