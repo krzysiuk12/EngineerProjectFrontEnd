@@ -1,9 +1,6 @@
 package pl.edu.agh.web.beans.common;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.exceptions.response.FormValidationError;
-import pl.edu.agh.services.DataCacheService;
 import pl.edu.agh.web.beans.ApplicationBean;
 import pl.edu.agh.web.beans.SessionBean;
 import pl.edu.agh.web.messages.BaseMessage;
@@ -12,24 +9,18 @@ import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.el.ELResolver;
 import javax.faces.context.FacesContext;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Krzysztof Kicinger on 2014-11-19.
  */
-@Component
 public class BaseBean {
 
-    @Autowired
-    protected DataCacheService dataCacheService;
     private SessionBean sessionBean;
     private ApplicationBean applicationBean;
 
     public void refreshPageData() {
-        getSessionBean().setErrorMessages(new ArrayList<>());
-        getSessionBean().setInfoMessages(new ArrayList<>());
-        dataCacheService.refreshRequestData();
+        getSessionBean().refreshRequestData();
     }
 
     public String tryToNavigate(NavigationResults navigationResults) {
@@ -54,14 +45,6 @@ public class BaseBean {
         } else {
             addErrorMessage(ResponseErrorMessages.UNKNOWN_ERROR);
         }
-    }
-
-    public DataCacheService getDataCacheService() {
-        return dataCacheService;
-    }
-
-    public void setDataCacheService(DataCacheService dataCacheService) {
-        this.dataCacheService = dataCacheService;
     }
 
     //<editor-fold desc="Getters and Setters">

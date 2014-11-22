@@ -21,46 +21,57 @@ public class MainPageMenuBean extends BaseBean {
     private SessionManagementService sessionManagementService;
 
     public String homeAction() {
+        refreshPageData();
         return NavigationResults.MY_PANEL_PAGE.getNavigation();
     }
 
     public String showMyAccountAction() {
+        refreshPageData();
         return NavigationResults.MY_ACCOUNT_PAGE.getNavigation();
     }
 
     public String editMyAccountAction() {
+        refreshPageData();
         return NavigationResults.EDIT_MY_ACCOUNT_PAGE.getNavigation();
     }
 
     public String changePasswordAction() {
+        refreshPageData();
         return NavigationResults.CHANGE_PASSWORD_PAGE.getNavigation();
     }
 
     public String showMyPreferencesAction() {
+        refreshPageData();
         return NavigationResults.MY_PREFERENCES_PAGE.getNavigation();
     }
 
     public String showAllLocationsAction() {
+        refreshPageData();
         return NavigationResults.SHOW_ALL_LOCATIONS_PAGE.getNavigation();
     }
 
     public String showMyLocationsAction() {
+        refreshPageData();
         return NavigationResults.SHOW_MY_LOCATIONS_PAGE.getNavigation();
     }
 
     public String showLocationDescriptionAction() {
+        refreshPageData();
         return NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE.getNavigation();
     }
 
     public String addLocationAction() {
+        refreshPageData();
         return NavigationResults.ADD_LOCATION_PAGE.getNavigation();
     }
 
     public String createNewTripAction() {
+        refreshPageData();
         return NavigationResults.NEW_TRIP_PAGE.getNavigation();
     }
 
     public String showTripsAction() {
+        refreshPageData();
         return NavigationResults.SHOW_TRIPS_PAGE.getNavigation();
     }
 

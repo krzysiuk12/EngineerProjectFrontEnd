@@ -1,8 +1,5 @@
 package pl.edu.agh.web.beans.registration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.edu.agh.services.UsersManagementService;
 import pl.edu.agh.tools.StringTools;
 import pl.edu.agh.tools.ValidationTools;
 import pl.edu.agh.web.beans.common.BaseBean;
@@ -19,11 +16,8 @@ import java.io.Serializable;
  */
 @ManagedBean(name = "signInBean")
 @RequestScoped
-@Component
 public class SignInBean extends BaseBean implements Serializable {
 
-    @Autowired
-    private UsersManagementService usersManagementService;
     private String login;
     private String email;
     private String password;
@@ -32,14 +26,6 @@ public class SignInBean extends BaseBean implements Serializable {
     private String lastName;
 
     //<editor-fold desc="Getters And Setters">
-    public UsersManagementService getUsersManagementService() {
-        return usersManagementService;
-    }
-
-    public void setUsersManagementService(UsersManagementService usersManagementService) {
-        this.usersManagementService = usersManagementService;
-    }
-
     public String getLogin() {
         return login;
     }
@@ -96,7 +82,7 @@ public class SignInBean extends BaseBean implements Serializable {
             return NavigationResults.RELOAD_PAGE.getNavigation();
         }
         try {
-            usersManagementService.addNewUserAccount(getLogin(), getPassword(), getEmail(), getFirstName(), getLastName());
+            getSessionBean().getUsersManagementService().addNewUserAccount(getLogin(), getPassword(), getEmail(), getFirstName(), getLastName());
             addInfoMessage(InfoMessages.ACCOUNT_SUCCESSFULLY_CREATED);
         } catch(Exception ex) {
             processRequestException(ex);
@@ -144,4 +130,5 @@ public class SignInBean extends BaseBean implements Serializable {
         refreshPageData();
         return NavigationResults.LOG_IN_PAGE.getNavigation();
     }
+
 }

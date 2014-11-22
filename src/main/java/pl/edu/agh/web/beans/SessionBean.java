@@ -1,6 +1,10 @@
 package pl.edu.agh.web.beans;
 
 import pl.edu.agh.domain.useraccounts.UserAccount;
+import pl.edu.agh.services.DataCacheService;
+import pl.edu.agh.services.LocationsManagementService;
+import pl.edu.agh.services.SessionManagementService;
+import pl.edu.agh.services.UsersManagementService;
 import pl.edu.agh.web.messages.BaseMessage;
 
 import javax.faces.bean.ManagedBean;
@@ -15,6 +19,11 @@ import java.util.List;
 @SessionScoped
 public class SessionBean {
 
+    private UsersManagementService usersManagementService = new UsersManagementService();
+    private LocationsManagementService locationsManagementService = new LocationsManagementService();
+    private SessionManagementService sessionManagementService = new SessionManagementService();
+    private DataCacheService dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService());
+
     private UserAccount loggedUserAccount;
     private String userToken;
     protected List<BaseMessage> errorMessages = new ArrayList<>();
@@ -22,6 +31,7 @@ public class SessionBean {
     protected Long selectedLocationId;
     protected Long selectedTripId;
 
+    //<editor-fold desc="Getters and Setters">
     public UserAccount getLoggedUserAccount() {
         return loggedUserAccount;
     }
@@ -69,5 +79,63 @@ public class SessionBean {
     public void setSelectedTripId(Long selectedTripId) {
         this.selectedTripId = selectedTripId;
     }
+    //</editor-fold>
 
+    //<editor-fold desc="Services Getters and Setters">
+    public DataCacheService getDataCacheService() {
+        if(dataCacheService == null) {
+            dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService());
+        }
+        return dataCacheService;
+    }
+
+    public void setDataCacheService(DataCacheService dataCacheService) {
+        this.dataCacheService = dataCacheService;
+    }
+
+    public UsersManagementService getUsersManagementService() {
+        if(usersManagementService == null) {
+            usersManagementService = new UsersManagementService();
+        }
+        return usersManagementService;
+    }
+
+    public void setUsersManagementService(UsersManagementService usersManagementService) {
+        this.usersManagementService = usersManagementService;
+    }
+
+    public LocationsManagementService getLocationsManagementService() {
+        if(locationsManagementService == null) {
+            locationsManagementService = new LocationsManagementService();
+        }
+        return locationsManagementService;
+    }
+
+    public void setLocationsManagementService(LocationsManagementService locationsManagementService) {
+        this.locationsManagementService = locationsManagementService;
+    }
+
+    public SessionManagementService getSessionManagementService() {
+        if(locationsManagementService == null) {
+            locationsManagementService = new LocationsManagementService();
+        }
+        return sessionManagementService;
+    }
+
+    public void setSessionManagementService(SessionManagementService sessionManagementService) {
+        this.sessionManagementService = sessionManagementService;
+    }
+    //</editor-fold>
+
+    //<editor-fold desc="Data Refreshing">
+    public void refreshRequestData() {
+        setErrorMessages(new ArrayList<>());
+        setInfoMessages(new ArrayList<>());
+        getDataCacheService().refreshRequestData();
+    }
+
+    public void refreshSessionData() {
+
+    }
+    //</editor-fold>
 }

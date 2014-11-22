@@ -5,7 +5,8 @@ package pl.edu.agh.web.messages;
  */
 public enum InfoMessages implements BaseMessage {
 
-    ACCOUNT_SUCCESSFULLY_CREATED;
+    ACCOUNT_SUCCESSFULLY_CREATED,
+    PASSWORD_SUCCESSFULLY_CHANGED;
 
     @Override
     public String getMessageKey() {
