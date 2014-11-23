@@ -21,7 +21,9 @@ public enum NavigationResults {
     SHOW_ALL_LOCATIONS_PAGE("ShowAllLocationsPage"),
     SHOW_MY_LOCATIONS_PAGE("ShowMyLocationsPage"),
     SHOW_LOCATION_DESCRIPTION_PAGE("ShowLocationDescriptionPage"),
-    ADD_LOCATION_COMMENT("AddLocationCommentPage"),
+    ADD_LOCATION_COMMENT_PAGE("AddLocationCommentPage"),
+    SHOW_NEWEST_LOCATIONS_PAGE("ShowNewestLocationsPage"),
+    SHOW_TOP_RATED_LOCATIONS_PAGE("ShowTopRatedLocationsPage"),
 
     NEW_TRIP_PAGE("NewTripPage"),
     SHOW_TRIPS_PAGE("ShowTripsPage");

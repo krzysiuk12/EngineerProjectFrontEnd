@@ -1,8 +1,5 @@
 package pl.edu.agh.web.beans.menus;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import pl.edu.agh.services.SessionManagementService;
 import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.navigation.NavigationResults;
 
@@ -14,11 +11,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "mainPageMenuBean")
 @SessionScoped
-@Component
 public class MainPageMenuBean extends BaseBean {
-
-    @Autowired
-    private SessionManagementService sessionManagementService;
 
     public String homeAction() {
         refreshPageData();
@@ -65,6 +58,16 @@ public class MainPageMenuBean extends BaseBean {
         return tryToNavigate(NavigationResults.ADD_LOCATION_PAGE);
     }
 
+    public String showNewestLocationsAction() {
+        refreshPageData();
+        return tryToNavigate(NavigationResults.SHOW_NEWEST_LOCATIONS_PAGE);
+    }
+
+    public String showTopRatedLocationsAction() {
+        refreshPageData();
+        return tryToNavigate(NavigationResults.SHOW_TOP_RATED_LOCATIONS_PAGE);
+    }
+
     public String createNewTripAction() {
         refreshPageData();
         return tryToNavigate(NavigationResults.NEW_TRIP_PAGE);
@@ -78,7 +81,7 @@ public class MainPageMenuBean extends BaseBean {
     public String logoutAction() {
         refreshPageData();
         try {
-            sessionManagementService.logoutUser(getSessionBean().getUserToken());
+            getSessionBean().getSessionManagementService().logoutUser(getSessionBean().getUserToken());
             getSessionBean().setUserToken(null);
         } catch(Exception ex) {
             processRequestException(ex);

@@ -52,17 +52,22 @@ public class MyPanelBean extends BaseBean {
 
     public String goToTopRatedLocationsAction() {
         refreshPageData();
-        return tryToNavigate(NavigationResults.SHOW_ALL_LOCATIONS_PAGE);
+        return tryToNavigate(NavigationResults.SHOW_TOP_RATED_LOCATIONS_PAGE);
     }
 
-    public String goToNewestLocationsActions() {
+    public String goToNewestLocationsAction() {
         refreshPageData();
-        return tryToNavigate(NavigationResults.SHOW_ALL_LOCATIONS_PAGE);
+        return tryToNavigate(NavigationResults.SHOW_NEWEST_LOCATIONS_PAGE);
+    }
+
+    public String goToPrivateLocationsAction() {
+        refreshPageData();
+        return tryToNavigate(NavigationResults.SHOW_MY_LOCATIONS_PAGE);
     }
 
     public String goToMyTripsAction() {
         refreshPageData();
-        return tryToNavigate(NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE);
+        return tryToNavigate(NavigationResults.SHOW_TRIPS_PAGE);
     }
 
     public String goToLocationDescriptionAction(Long id) {

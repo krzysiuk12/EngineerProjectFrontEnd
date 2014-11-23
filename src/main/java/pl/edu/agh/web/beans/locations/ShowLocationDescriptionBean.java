@@ -68,6 +68,6 @@ public class ShowLocationDescriptionBean extends BaseBean {
     public String addLocationCommentAction() {
         refreshPageData();
         getSessionBean().setSelectedLocationId(getLocation().getId());
-        return tryToNavigate(NavigationResults.ADD_LOCATION_COMMENT);
+        return tryToNavigate(NavigationResults.ADD_LOCATION_COMMENT_PAGE);
     }
 }

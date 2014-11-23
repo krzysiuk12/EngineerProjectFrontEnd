@@ -87,6 +87,16 @@
             <to-view-id>/pages/locations/AddLocationCommentPage.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowNewestLocationsPage</from-outcome>
+            <to-view-id>/pages/locations/ShowNewestLocationsPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>ShowTopRatedLocationsPage</from-outcome>
+            <to-view-id>/pages/locations/ShowTopRatedLocationsPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
     
 </faces-config>

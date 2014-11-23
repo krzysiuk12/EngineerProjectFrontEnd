@@ -66,6 +66,7 @@ public class AddLocationCommentBean extends BaseBean {
 
         try {
             getSessionBean().getLocationsManagementService().addLocationComment(getLocation().getId(), getSelectedRating(), getComment(), getSessionBean().getUserToken());
+            refreshPageData();
             addInfoMessage(InfoMessages.COMMENT_SUCCESSFULLY_ADDED);
         } catch(Exception ex) {
             processRequestException(ex);
