@@ -35,6 +35,8 @@ public enum ErrorMessages implements BaseMessage {
 
     INVALID_GOOGLE_GEOCODE_ADDRESS,
 
+    NO_PRIVATE_LOCATIONS,
+
     SERVER_SIDE_ERROR;
 
     @Override

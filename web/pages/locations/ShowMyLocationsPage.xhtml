@@ -1,43 +1,38 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:trip="http://tourtrip.com/facelets"
                 xmlns:m="http://code.google.com/p/gmaps4jsf/"
                 template="/pages/templates/MainPageTemplate.xhtml">
 
     <ui:define name="MainContent">
+        <script type="text/javascript">
+            function setLocationId(locId) {
+                return function (latlng) {
+                    console.log(locId);
+                    document.getElementById("containerForm:inputId").value = locId;
+                }
+            }
+        </script>
         <div class="theme-showcase" role="main">
             <div class="jumbotron">
-                <div class="row">
-                    <div class="col-md-8 col-lg-8">
-                        <m:map width="100%" latitude="30.01" longitude="31.14" enableScrollWheelZoom="true">
-                            <m:marker>
-                                <m:htmlInformationWindow htmlText="This is Cairo, Egypt"/>
-                            </m:marker>
+                <trip:dangerAlert errorMessagesList="#{showMyLocationsBean.errorMessages}"
+                                  rendered="#{!showMyLocationsBean.errorMessageEmpty}"/>
+                <h:panelGroup rendered="#{showMyLocationsBean.mapRendered}">
+                    <div class="row">
+                        <m:map width="100%" enableScrollWheelZoom="true" binding="#{showMyLocationsBean.map}">
                         </m:map>
                     </div>
-                    <div class="col-md-4 col-lg-4">
-                        <ul class="location-desc">
-                            <li>
-                                <h4>#{p['ShowAllLocations.OutputText.Name']}</h4>
-                                <h2>#{showMyLocationsBean.locationName}</h2>
-                            </li>
-                            <li>
-                                <h4>#{p['ShowAllLocations.OutputText.City']}</h4>
-                                <h2>#{showMyLocationsBean.locationCity}</h2>
-                            </li>
-                            <li>
-                                <h4>#{p['ShowAllLocations.OutputText.Country']}</h4>
-                                <h2>#{showMyLocationsBean.locationCountry}</h2>
-                            </li>
-                        </ul>
-                        <ul class="row text-center location-desc-actions">
-                            <li><h:commandButton styleClass="btn btn-lg btn-success" value="#{p['ShowAllLocations.Button.Search']}"></h:commandButton></li>
-                            <li><h:commandButton styleClass="btn btn-lg btn-warning" value="#{p['ShowAllLocations.Button.ShowDescription']}"></h:commandButton></li>
-                            <li><h:commandButton styleClass="btn btn-lg btn-primary" value="#{p['ShowAllLocations.Button.ShowTopRated']}"></h:commandButton></li>
-                        </ul>
+                    <div class="row">
+                        <div class="buttonList text-center" style="margin-top: 20px;">
+                            <h:commandLink styleClass="btn btn-warning btn-lg"
+                                           action="#{showMyLocationsBean.goToShowDescription}"
+                                           value="#{p['ShowAllLocations.Button.ShowDescription']}"/>
+                        </div>
                     </div>
-                </div>
+                    <h:inputText id="inputId" value="#{showMyLocationsBean.selectedId}" style="display: none"/>
+
+                </h:panelGroup>
             </div>
         </div>
     </ui:define>
