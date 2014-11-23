@@ -3,6 +3,7 @@ package pl.edu.agh.services;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.domain.useraccounts.UserAccount;
 import pl.edu.agh.services.serializers.common.BaseResponseSerializer;
+import pl.edu.agh.services.serializers.users.ChangePasswordRequestSerializer;
 import pl.edu.agh.services.serializers.users.UserRegistrationRequestSerializer;
 import pl.edu.agh.services.serializers.users.UserResponseSerializer;
 import pl.edu.agh.services.serializers.users.UsersListResponseSerializer;
@@ -46,4 +47,9 @@ public class UsersManagementService extends BaseService {
         return (UserAccount) parseResponse(rs);
     }
 
+    public boolean changeUserAccountPassword(String currentPassword, String newPassword, String token) throws Exception {
+        ChangePasswordRequestSerializer changePasswordRequestSerializer = new ChangePasswordRequestSerializer(currentPassword, newPassword);
+        BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getChangePasswordRequestPath(), token, changePasswordRequestSerializer, BaseResponseSerializer.class);
+        return testResponseCorrectness(rs);
+    }
 }

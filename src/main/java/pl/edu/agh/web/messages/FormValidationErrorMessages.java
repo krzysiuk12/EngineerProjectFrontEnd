@@ -20,7 +20,9 @@ public enum FormValidationErrorMessages implements BaseMessage {
     CHANGE_PASSWORD_CURRENT_PASSWORD,
     CHANGE_PASSWORD_NEW_PASSWORD,
     CHANGE_PASSWORD_CONFIRM_NEW_PASSWORD,
-    CHANGE_PASSWORD_NEW_AND_CONFIRM_NOT_EQUAL;
+    CHANGE_PASSWORD_NEW_AND_CONFIRM_NOT_EQUAL,
+
+    COMMENT_IS_REQUIRED;
 
     @Override
     public String getMessageKey() {

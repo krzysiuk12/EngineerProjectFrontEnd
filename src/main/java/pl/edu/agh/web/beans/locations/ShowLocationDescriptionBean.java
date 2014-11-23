@@ -1,33 +1,28 @@
 package pl.edu.agh.web.beans.locations;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.domain.locations.Location;
-import pl.edu.agh.services.DataCacheService;
 import pl.edu.agh.services.LocationsManagementService;
 import pl.edu.agh.web.beans.ApplicationBean;
 import pl.edu.agh.web.beans.common.BaseBean;
+import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  * Created by Krzysztof Kicinger on 2014-11-19.
  */
 @ManagedBean(name = "showLocationDescriptionBean")
-@RequestScoped
-@Component
+@ViewScoped
 public class ShowLocationDescriptionBean extends BaseBean {
 
-    @Autowired
-    private DataCacheService dataCacheService;
     private LocationsManagementService locationsManagementService;
     private Location location;
     private Long id;
 
     public Location getLocation() {
         try {
-            location = dataCacheService.getSelectedLocation(getSessionBean().getSelectedLocationId(), getSessionBean().getUserToken());
+            location = getSessionBean().getDataCacheService().getSelectedLocation(getSessionBean().getSelectedLocationId(), getSessionBean().getUserToken());
         } catch (Exception ex) {
             processRequestException(ex);
         }
@@ -43,27 +38,36 @@ public class ShowLocationDescriptionBean extends BaseBean {
     }
 
     public String getCreatedBy() {
-        return location.getCreatedByAccount() != null ? location.getCreatedByAccount().getLogin() : ApplicationBean.ADMINISTRATOR_USER;
+        return location.getCreatedByAccount() != null ? getLocation().getCreatedByAccount().getLogin() : ApplicationBean.ADMINISTRATOR_USER;
     }
 
     public boolean isUrlRedirectionEnabled() {
-        return location.getUrl() != null;
+        return getLocation().getUrl() != null;
     }
 
     public boolean isLocationAvailable() {
-        return location.getStatus() == Location.Status.AVAILABLE;
+        return getLocation().getStatus() == Location.Status.AVAILABLE;
     }
 
     public boolean isLocationUnavailable() {
-        return location.getStatus() == Location.Status.UNAVAILABLE;
+        return getLocation().getStatus() == Location.Status.UNAVAILABLE;
     }
 
     public boolean isLocationRemoved() {
-        return location.getStatus() == Location.Status.REMOVED;
+        return getLocation().getStatus() == Location.Status.REMOVED;
     }
 
     public boolean isCommentListAvailable() {
-        return location.getComments() != null && !location.getComments().isEmpty();
+        return location.getComments() != null && !getLocation().getComments().isEmpty();
     }
 
+    public boolean isLocationRated() {
+        return Double.compare(getLocation().getRating(), 0.0) > 0;
+    }
+
+    public String addLocationCommentAction() {
+        refreshPageData();
+        getSessionBean().setSelectedLocationId(getLocation().getId());
+        return tryToNavigate(NavigationResults.ADD_LOCATION_COMMENT);
+    }
 }

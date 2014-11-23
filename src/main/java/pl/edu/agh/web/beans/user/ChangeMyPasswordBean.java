@@ -60,7 +60,12 @@ public class ChangeMyPasswordBean extends BaseBean {
         if(!getNewPassword().equals(getConfirmNewPassword())) {
             addErrorMessage(FormValidationErrorMessages.CHANGE_PASSWORD_NEW_AND_CONFIRM_NOT_EQUAL);
         }
-        addInfoMessage(InfoMessages.PASSWORD_SUCCESSFULLY_CHANGED);
+        try {
+            getSessionBean().getUsersManagementService().changeUserAccountPassword(getCurrentPassword(), getNewPassword(), getSessionBean().getUserToken());
+            addInfoMessage(InfoMessages.PASSWORD_SUCCESSFULLY_CHANGED);
+        } catch(Exception ex) {
+            processRequestException(ex);
+        }
         return tryToNavigate(NavigationResults.MY_PANEL_PAGE);
     }
 

@@ -82,6 +82,11 @@
             <to-view-id>/pages/trips/ShowTripsPage.xhtml</to-view-id>
             <redirect />
         </navigation-case>
+        <navigation-case>
+            <from-outcome>AddLocationCommentPage</from-outcome>
+            <to-view-id>/pages/locations/AddLocationCommentPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
     </navigation-rule>
     
 </faces-config>

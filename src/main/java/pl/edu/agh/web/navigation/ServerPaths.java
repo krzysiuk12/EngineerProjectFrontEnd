@@ -52,6 +52,14 @@ public class ServerPaths {
         return getLocationByIdRequestPath(id);
     }
 
+    public static String getAddCommentRequestPath(Long id) {
+        return new StringBuilder(getLocationByIdRequestPath(id)).append("/comment").toString();
+    }
+
+    public static String getChangePasswordRequestPath() {
+        return new StringBuilder(getMyUserAccountRequestPath()).append("/password").toString();
+    }
+
     public static String getLoginUserRequestPath() {
         return LOGIN_SESSION_SERVER_PATH;
     }

@@ -4,10 +4,7 @@ import com.googlecode.gmaps4jsf.component.eventlistener.EventListener;
 import com.googlecode.gmaps4jsf.component.map.Map;
 import com.googlecode.gmaps4jsf.component.marker.Marker;
 import com.googlecode.gmaps4jsf.component.window.HTMLInformationWindow;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.domain.locations.Location;
-import pl.edu.agh.services.DataCacheService;
 import pl.edu.agh.web.beans.common.BaseBean;
 import pl.edu.agh.web.messages.FormValidationErrorMessages;
 import pl.edu.agh.web.navigation.NavigationResults;
@@ -21,11 +18,8 @@ import java.util.List;
  */
 @ManagedBean(name = "showAllLocationsBean")
 @ViewScoped
-@Component
 public class ShowAllLocationsBean extends BaseBean {
 
-    @Autowired
-    private DataCacheService dataCacheService;
     private List<Location> locations;
     private Location selectedLocation;
     private Long selectedId;
@@ -45,7 +39,7 @@ public class ShowAllLocationsBean extends BaseBean {
 
     public List<Location> getLocations() {
         try {
-            locations = dataCacheService.getAllLocations();
+            locations = getSessionBean().getDataCacheService().getAllLocations();
         } catch (Exception ex) {
             processRequestException(ex);
         }
@@ -67,14 +61,6 @@ public class ShowAllLocationsBean extends BaseBean {
 
     public void setSelectedLocation(Location selectedLocation) {
         this.selectedLocation = selectedLocation;
-    }
-
-    public DataCacheService getDataCacheService() {
-        return dataCacheService;
-    }
-
-    public void setDataCacheService(DataCacheService dataCacheService) {
-        this.dataCacheService = dataCacheService;
     }
 
     public Long getSelectedId() {

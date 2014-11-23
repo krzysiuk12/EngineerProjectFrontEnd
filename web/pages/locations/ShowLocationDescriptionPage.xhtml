@@ -9,9 +9,8 @@
     <ui:define name="MainContent">
         <div class="theme-showcase" role="main">
             <div class="jumbotron">
-                <script type="text/javascript">
-
-                </script>
+                <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
+                <trip:infoAlert infoMessagesList="#{logInBean.infoMessages}" rendered="#{!logInBean.infoMessageEmpty}"/>
                 <div class="row">
                     <div class="col-md-6 col-lg-6">
                         <m:map width="100%" latitude="#{showLocationDescriptionBean.location.latitude}"
@@ -36,8 +35,16 @@
                                 <div class="row">
                                     <div class="col-md-6 col-lg-6">
                                         <trip:outputLabel label="#{p['ShowLocationDescription.Rating.Label']}">
-                                            <ui:define name="value"><span
-                                                    class="label label-success">#{showLocationDescriptionBean.location.rating}</span></ui:define>
+                                            <ui:define name="value">
+                                                <h:panelGroup rendered="#{showLocationDescriptionBean.locationRated}">
+                                                    <h:outputText styleClass="label label-success" value="#{showLocationDescriptionBean.location.rating}">
+                                                        <f:convertNumber pattern="#.##"/>
+                                                    </h:outputText>
+                                                </h:panelGroup>
+                                                <h:panelGroup rendered="#{!showLocationDescriptionBean.locationRated}">
+                                                    <span class="label label-danger">#{p['ShowLocationDescription.Rating.NoData']}</span>
+                                                </h:panelGroup>
+                                                </ui:define>
                                         </trip:outputLabel>
                                     </div>
                                     <div class="col-md-6 col-lg-6">
@@ -73,9 +80,18 @@
                             </li>
                         </ul>
                         <ul class="row text-center location-desc-actions">
-                            <li><h:outputLink styleClass="btn btn-lg btn-warning"
+                            <li>
+                                <h:outputLink style="width: 300px"
+                                              styleClass="btn btn-lg btn-warning"
                                               value="#{showLocationDescriptionBean.location.url}"
-                                              disabled="#{!showLocationDescriptionBean.urlRedirectionEnabled}">#{p['ShowLocationDescription.Buttons.URL']}</h:outputLink>
+                                              disabled="#{!showLocationDescriptionBean.urlRedirectionEnabled}">
+                                              #{p['ShowLocationDescription.Buttons.URL']}
+                            </h:outputLink>
+                            </li>
+                            <li>
+                                <h:commandLink style="width: 300px" styleClass="btn btn-lg btn-success" action="#{showLocationDescriptionBean.addLocationCommentAction}">
+                                    #{p['ShowLocationDescription.Buttons.AddComment']}
+                                </h:commandLink>
                             </li>
                         </ul>
                     </div>

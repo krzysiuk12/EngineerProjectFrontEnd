@@ -24,6 +24,7 @@ public class BaseBean {
     }
 
     public String tryToNavigate(NavigationResults navigationResults) {
+        //refreshPageData();
         return getSessionBean().getErrorMessages().isEmpty() ? navigationResults.getNavigation() : NavigationResults.RELOAD_PAGE.getNavigation();
     }
 

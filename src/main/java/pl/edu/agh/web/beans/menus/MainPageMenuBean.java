@@ -22,57 +22,57 @@ public class MainPageMenuBean extends BaseBean {
 
     public String homeAction() {
         refreshPageData();
-        return NavigationResults.MY_PANEL_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.MY_PANEL_PAGE);
     }
 
     public String showMyAccountAction() {
         refreshPageData();
-        return NavigationResults.MY_ACCOUNT_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.MY_ACCOUNT_PAGE);
     }
 
     public String editMyAccountAction() {
         refreshPageData();
-        return NavigationResults.EDIT_MY_ACCOUNT_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.EDIT_MY_ACCOUNT_PAGE);
     }
 
     public String changePasswordAction() {
         refreshPageData();
-        return NavigationResults.CHANGE_PASSWORD_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.CHANGE_PASSWORD_PAGE);
     }
 
     public String showMyPreferencesAction() {
         refreshPageData();
-        return NavigationResults.MY_PREFERENCES_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.MY_PREFERENCES_PAGE);
     }
 
     public String showAllLocationsAction() {
         refreshPageData();
-        return NavigationResults.SHOW_ALL_LOCATIONS_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.SHOW_ALL_LOCATIONS_PAGE);
     }
 
     public String showMyLocationsAction() {
         refreshPageData();
-        return NavigationResults.SHOW_MY_LOCATIONS_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.SHOW_MY_LOCATIONS_PAGE);
     }
 
     public String showLocationDescriptionAction() {
         refreshPageData();
-        return NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE);
     }
 
     public String addLocationAction() {
         refreshPageData();
-        return NavigationResults.ADD_LOCATION_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.ADD_LOCATION_PAGE);
     }
 
     public String createNewTripAction() {
         refreshPageData();
-        return NavigationResults.NEW_TRIP_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.NEW_TRIP_PAGE);
     }
 
     public String showTripsAction() {
         refreshPageData();
-        return NavigationResults.SHOW_TRIPS_PAGE.getNavigation();
+        return tryToNavigate(NavigationResults.SHOW_TRIPS_PAGE);
     }
 
     public String logoutAction() {

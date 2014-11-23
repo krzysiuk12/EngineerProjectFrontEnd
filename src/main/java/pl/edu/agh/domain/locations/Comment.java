@@ -11,11 +11,21 @@ import java.util.Date;
 public class Comment extends BaseObject {
 
     public enum Rating {
-        VERY_BAD,
-        BAD,
-        OK,
-        GOOD,
-        EXCELLENT
+        VERY_BAD("Very Bad"),
+        BAD("Bad"),
+        OK("Ok"),
+        GOOD("Good"),
+        EXCELLENT("Excellent"),;
+
+        private String description;
+
+        Rating(String description) {
+            this.description = description;
+        }
+
+        public String getDescription() {
+            return description;
+        }
     }
 
     private UserAccount userAccount;

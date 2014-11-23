@@ -1,12 +1,10 @@
 package pl.edu.agh.services;
 
 import org.springframework.stereotype.Service;
+import pl.edu.agh.domain.locations.Comment;
 import pl.edu.agh.domain.locations.Location;
 import pl.edu.agh.services.serializers.common.BaseResponseSerializer;
-import pl.edu.agh.services.serializers.locations.LocationListResponseSerializer;
-import pl.edu.agh.services.serializers.locations.LocationRequestSerializer;
-import pl.edu.agh.services.serializers.locations.LocationResponseSerializer;
-import pl.edu.agh.services.serializers.locations.LocationStatusChangeRequestSerializer;
+import pl.edu.agh.services.serializers.locations.*;
 import pl.edu.agh.web.navigation.ServerPaths;
 
 import java.util.List;
@@ -62,6 +60,12 @@ public class LocationsManagementService extends BaseService {
 
     public boolean deleteLocation(Long id, String token) throws Exception {
         BaseResponseSerializer rs = executeHttpDeleteRequest(ServerPaths.getDeleteLocationRequestPath(id), token, BaseResponseSerializer.class);
+        return testResponseCorrectness(rs);
+    }
+
+    public boolean addLocationComment(Long id, Comment.Rating rating, String comment, String token) throws Exception {
+        CommentRequestSerializer commentRequestSerializer = new CommentRequestSerializer(rating, comment);
+        BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getAddCommentRequestPath(id), token, commentRequestSerializer, BaseResponseSerializer.class);
         return testResponseCorrectness(rs);
     }
 

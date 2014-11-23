@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:trip="http://tourtrip.com/facelets"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}"
+                                  rendered="#{!logInBean.errorMessageEmpty}"/>
+                <div class="row">
+                    <div class="col-md-5 col-lg-5">
+                        <h:graphicImage value="/resources/images/AddComment.png"/>
+                    </div>
+                    <div class="col-md-7 col-lg-7">
+                        <div class="row text-center">
+                            <h2>#{addLocationCommentBean.location.name}</h2>
+                        </div>
+                        <div class="row">
+                            <h4>#{p['AddLocationComment.Rating.Label']}</h4>
+                            <h:selectOneMenu value="#{addLocationCommentBean.selectedRating}"
+                                             styleClass="btn btn-primary">
+                                <f:selectItems value="#{addLocationCommentBean.ratingValues}" var="rank"
+                                               itemLabel="#{rank.description}" itemValue="#{rank}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="row">
+                            <h4>#{p['AddLocationComment.Comment.Label']}</h4>
+                            <h:inputTextarea styleClass="form-control" value="#{addLocationCommentBean.comment}"/>
+                        </div>
+
+                        <div class="row text-center" style="margin-top: 30px">
+                            <h:commandLink style="width: 300px" styleClass="btn btn-lg btn-success"
+                                           action="#{addLocationCommentBean.addCommentAction}">
+                                #{p['AddLocationComment.Buttons.AddComment']}
+                            </h:commandLink>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
