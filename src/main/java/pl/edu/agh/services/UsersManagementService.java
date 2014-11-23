@@ -3,10 +3,7 @@ package pl.edu.agh.services;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.domain.useraccounts.UserAccount;
 import pl.edu.agh.services.serializers.common.BaseResponseSerializer;
-import pl.edu.agh.services.serializers.users.ChangePasswordRequestSerializer;
-import pl.edu.agh.services.serializers.users.UserRegistrationRequestSerializer;
-import pl.edu.agh.services.serializers.users.UserResponseSerializer;
-import pl.edu.agh.services.serializers.users.UsersListResponseSerializer;
+import pl.edu.agh.services.serializers.users.*;
 import pl.edu.agh.web.navigation.ServerPaths;
 
 import java.util.List;
@@ -50,6 +47,12 @@ public class UsersManagementService extends BaseService {
     public boolean changeUserAccountPassword(String currentPassword, String newPassword, String token) throws Exception {
         ChangePasswordRequestSerializer changePasswordRequestSerializer = new ChangePasswordRequestSerializer(currentPassword, newPassword);
         BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getChangePasswordRequestPath(), token, changePasswordRequestSerializer, BaseResponseSerializer.class);
+        return testResponseCorrectness(rs);
+    }
+
+    public boolean updateUserAccount(String email, String firstName, String lastName, String city, String country, String description, String token) throws Exception {
+        UserAccountRequestSerializer userAccountRequestSerializer = new UserAccountRequestSerializer(email, firstName, lastName, description, city, country);
+        BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getUpdateUserAccountRequestPath(), token, userAccountRequestSerializer, BaseResponseSerializer.class);
         return testResponseCorrectness(rs);
     }
 }

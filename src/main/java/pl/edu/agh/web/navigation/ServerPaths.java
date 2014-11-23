@@ -56,10 +56,6 @@ public class ServerPaths {
         return new StringBuilder(getLocationByIdRequestPath(id)).append("/comment").toString();
     }
 
-    public static String getChangePasswordRequestPath() {
-        return new StringBuilder(getMyUserAccountRequestPath()).append("/password").toString();
-    }
-
     public static String getLoginUserRequestPath() {
         return LOGIN_SESSION_SERVER_PATH;
     }
@@ -90,6 +86,14 @@ public class ServerPaths {
 
     public static String getMyUserAccountAllDataRequestPath() {
         return new StringBuilder(getMyUserAccountRequestPath()).append("/all").toString();
+    }
+
+    public static String getChangePasswordRequestPath() {
+        return new StringBuilder(getMyUserAccountRequestPath()).append("/password").toString();
+    }
+
+    public static String getUpdateUserAccountRequestPath() {
+        return new StringBuilder(getMyUserAccountRequestPath()).toString();
     }
 
     public static String getLocationFromAddressRequestPath() {

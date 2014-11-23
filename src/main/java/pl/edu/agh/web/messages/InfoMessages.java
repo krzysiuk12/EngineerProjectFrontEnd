@@ -7,7 +7,8 @@ public enum InfoMessages implements BaseMessage {
 
     ACCOUNT_SUCCESSFULLY_CREATED,
     PASSWORD_SUCCESSFULLY_CHANGED,
-    COMMENT_SUCCESSFULLY_ADDED;
+    COMMENT_SUCCESSFULLY_ADDED,
+    USER_ACCOUNT_SUCCESSFULLY_UPDATED;
 
     @Override
     public String getMessageKey() {

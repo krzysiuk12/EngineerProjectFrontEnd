@@ -1,13 +1,14 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                xmlns:trip="http://tourtrip.com/facelets"
                 template="/pages/templates/MainPageTemplate.xhtml">
 
     <ui:define name="MainContent">
         <div class="theme-showcase" role="main">
             <div class="jumbotron">
+                <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
+                <trip:infoAlert infoMessagesList="#{logInBean.infoMessages}" rendered="#{!logInBean.infoMessageEmpty}"/>
                 <div class="row">
                     <div class="col-md-4 col-lg-4">
                         <h:graphicImage value="/resources/images/UserDefault.png"/>

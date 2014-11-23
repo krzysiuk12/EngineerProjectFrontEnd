@@ -1,11 +1,11 @@
 package pl.edu.agh.web.beans.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import pl.edu.agh.domain.useraccounts.UserAccount;
-import pl.edu.agh.services.UsersManagementService;
+import pl.edu.agh.tools.StringTools;
 import pl.edu.agh.web.beans.common.BaseBean;
+import pl.edu.agh.web.messages.ErrorMessages;
+import pl.edu.agh.web.messages.InfoMessages;
+import pl.edu.agh.web.navigation.NavigationResults;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -15,18 +15,14 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean(name = "editMyAccountBean")
 @ViewScoped
-@Component
-@Scope(value = "prototype")
 public class EditMyAccountBean extends BaseBean {
 
-    @Autowired
-    private UsersManagementService usersManagementService;
     private UserAccount userAccount;
 
     public UserAccount getUserAccount() {
         if(userAccount == null) {
             try {
-                setUserAccount(usersManagementService.getMyUserAccountByIdAllData(getSessionBean().getUserToken()));
+                setUserAccount(getSessionBean().getUsersManagementService().getMyUserAccountByIdAllData(getSessionBean().getUserToken()));
             } catch(Exception ex) {
                 processRequestException(ex);
             }
@@ -36,6 +32,28 @@ public class EditMyAccountBean extends BaseBean {
 
     public void setUserAccount(UserAccount userAccount) {
         this.userAccount = userAccount;
+    }
+
+    public String saveUserAccountAction() {
+        if(StringTools.isNullOrEmpty(getUserAccount().getEmail())) {
+            addErrorMessage(ErrorMessages.INVALID_USER_EMAIL);
+        }
+        if(StringTools.isNullOrEmpty(getUserAccount().getIndividual().getFirstName())) {
+            addErrorMessage(ErrorMessages.INVALID_INDIVIDUAL_FIRST_NAME);
+        }
+        if(StringTools.isNullOrEmpty(getUserAccount().getIndividual().getLastName())) {
+            addErrorMessage(ErrorMessages.INVALID_INDIVIDUAL_LAST_NAME);
+        }
+        if(!isErrorMessageEmpty()) {
+            return NavigationResults.RELOAD_PAGE.getNavigation();
+        }
+        try {
+            getSessionBean().getUsersManagementService().updateUserAccount(getUserAccount().getEmail(), getUserAccount().getIndividual().getFirstName(), getUserAccount().getIndividual().getLastName(), getUserAccount().getIndividual().getCity(), getUserAccount().getIndividual().getCountry(), getUserAccount().getIndividual().getDescription(), getSessionBean().getUserToken());
+            addInfoMessage(InfoMessages.USER_ACCOUNT_SUCCESSFULLY_UPDATED);
+        } catch (Exception ex) {
+            processRequestException(ex);
+        }
+        return tryToNavigate(NavigationResults.MY_ACCOUNT_PAGE);
     }
 
 }
