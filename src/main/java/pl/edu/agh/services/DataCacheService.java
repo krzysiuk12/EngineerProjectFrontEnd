@@ -26,7 +26,7 @@ public class DataCacheService {
         TOP_RATED {
             @Override
             public int compare(Location o1, Location o2) {
-                return (int) (o1.getRating() * 10 - o2.getRating() * 10);
+                return (int) (o1.getRating() * 100 - o2.getRating() * 100);
             }
         };
     }
@@ -111,8 +111,10 @@ public class DataCacheService {
 
     //<editor-fold desc="Helper Methods">
     private List<Location> getSortedCollection(List<Location> locationsList, Comparator<Location> comparator) {
-        Collections.sort(locationsList, comparator);
-        return locationsList;
+        List<Location> locations = new ArrayList<>(locationsList);
+        Collections.sort(locations, comparator);
+        Collections.reverse(locations);
+        return locations;
     }
     //</editor-fold>
 
