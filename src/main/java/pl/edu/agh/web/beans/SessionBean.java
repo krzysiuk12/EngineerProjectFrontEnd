@@ -1,10 +1,7 @@
 package pl.edu.agh.web.beans;
 
 import pl.edu.agh.domain.useraccounts.UserAccount;
-import pl.edu.agh.services.DataCacheService;
-import pl.edu.agh.services.LocationsManagementService;
-import pl.edu.agh.services.SessionManagementService;
-import pl.edu.agh.services.UsersManagementService;
+import pl.edu.agh.services.*;
 import pl.edu.agh.web.messages.BaseMessage;
 
 import javax.faces.bean.ManagedBean;
@@ -21,8 +18,9 @@ public class SessionBean {
 
     private UsersManagementService usersManagementService = new UsersManagementService();
     private LocationsManagementService locationsManagementService = new LocationsManagementService();
+    private TripsManagementService tripsManagementService = new TripsManagementService();
     private SessionManagementService sessionManagementService = new SessionManagementService();
-    private DataCacheService dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService());
+    private DataCacheService dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService(), getTripsManagementService());
 
     private UserAccount loggedUserAccount;
     private String userToken;
@@ -84,7 +82,7 @@ public class SessionBean {
     //<editor-fold desc="Services Getters and Setters">
     public DataCacheService getDataCacheService() {
         if(dataCacheService == null) {
-            dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService());
+            dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService(), getTripsManagementService());
         }
         return dataCacheService;
     }
@@ -116,8 +114,8 @@ public class SessionBean {
     }
 
     public SessionManagementService getSessionManagementService() {
-        if(locationsManagementService == null) {
-            locationsManagementService = new LocationsManagementService();
+        if(sessionManagementService == null) {
+            sessionManagementService = new SessionManagementService();
         }
         return sessionManagementService;
     }
@@ -125,6 +123,18 @@ public class SessionBean {
     public void setSessionManagementService(SessionManagementService sessionManagementService) {
         this.sessionManagementService = sessionManagementService;
     }
+
+    public TripsManagementService getTripsManagementService() {
+        if(tripsManagementService == null) {
+            tripsManagementService = new TripsManagementService();
+        }
+        return tripsManagementService;
+    }
+
+    public void setTripsManagementService(TripsManagementService tripsManagementService) {
+        this.tripsManagementService = tripsManagementService;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Data Refreshing">

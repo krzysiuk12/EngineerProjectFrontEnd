@@ -2,6 +2,7 @@ package pl.edu.agh.domain.trips;
 
 
 import pl.edu.agh.domain.common.implementation.VersionedBaseObject;
+import pl.edu.agh.domain.locations.Location;
 import pl.edu.agh.domain.useraccounts.UserAccount;
 
 import java.util.Date;
@@ -79,6 +80,16 @@ public class Trip extends VersionedBaseObject {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Location getStartLocation() {
+        return getDays().get(0).getLocations().get(0).getLocation();
+    }
+
+    public Location getEndLocation() {
+        TripDay tripDay = getDays().get(getDays().size() - 1);
+        int lastLocationNumber = tripDay.getLocations().size() - 1;
+        return tripDay.getLocations().get(lastLocationNumber).getLocation();
     }
 
 }

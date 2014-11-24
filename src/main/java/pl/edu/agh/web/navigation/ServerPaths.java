@@ -14,6 +14,9 @@ public class ServerPaths {
     private static final String ADD_NEW_PRIVATE_LOCATION_SERVER_PATH = LOCATIONS_SERVER_PATH + "/private";
     private static final String LOGIN_SESSION_SERVER_PATH = SESSION_SERVER_PATH + "/login";
     private static final String LOGOUT_SESSION_SERVER_PATH = SESSION_SERVER_PATH + "/logout";
+    private static final String TRIPS_SERVER_PATH = SERVER_PATH + "/trips";
+    private static final String MY_TRIPS_SERVER_PATH = TRIPS_SERVER_PATH + "/my";
+    private static final String TRIP_DAYS_SERVER_PATH = TRIPS_SERVER_PATH + "/day";
 
 
     public static String getAllLocationsRequestPath() {
@@ -114,6 +117,10 @@ public class ServerPaths {
 
     public static String getLocationsInScopeRequestPath(double latitude, double longitude, double scope) {
         return new StringBuilder(COORDINATES_SERVER_PATH).append("/").append(latitude).append("/").append(longitude).append("/").append(scope).append("/locations").toString();
+    }
+
+    public static String getMyTripsRequestPath() {
+        return MY_TRIPS_SERVER_PATH;
     }
 
 }

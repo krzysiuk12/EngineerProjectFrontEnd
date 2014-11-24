@@ -33,6 +33,7 @@ public class DataCacheService {
 
     private UsersManagementService usersManagementService;
     private LocationsManagementService locationsManagementService;
+    private TripsManagementService tripsManagementService;
 
     private List<Trip> myTrips = new ArrayList<>();
     private List<Location> allLocations = new ArrayList<>();
@@ -40,11 +41,13 @@ public class DataCacheService {
     private List<Location> newestLocations = new ArrayList<>();
     private List<Location> privateLocations = new ArrayList<>();
     private Location selectedLocation;
+    private Trip selectedTrip;
 
     @Autowired
-    public DataCacheService(UsersManagementService usersManagementService, LocationsManagementService locationsManagementService) {
+    public DataCacheService(UsersManagementService usersManagementService, LocationsManagementService locationsManagementService, TripsManagementService tripsManagementService) {
         this.usersManagementService = usersManagementService;
         this.locationsManagementService = locationsManagementService;
+        this.tripsManagementService = tripsManagementService;
     }
 
     public void initializeCache(String token) throws Exception {
@@ -52,7 +55,7 @@ public class DataCacheService {
         setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
         setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
         setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
-        setMyTrips(null);
+        setMyTrips(tripsManagementService.getMyTripsList(token));
     }
 
     //<editor-fold desc="Getter And Setters">
@@ -123,9 +126,11 @@ public class DataCacheService {
         setSelectedLocation(null);
     }
 
-    public void refreshSessionData() {
+    public void refreshSessionData(String token) throws Exception {
         refreshRequestData();
         setAllLocations(null);
+        setMyTrips(null);
+        initializeCache(token);
     }
     //</editor-fold>
 

@@ -1,11 +1,46 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <h2>#{p['ShowMyTripsList.Header']}</h2>
+
+                <div class="list-group">
+                    <ui:repeat value="#{showMyTripsListBean.trips}" var="trip">
+                        <h:commandLink class="list-group-item"
+                                       action="#{showMyTripsListBean.goToTripDescriptionAction(trip.id)}">
+                            <div class="row">
+                                <div class="col-md-11 col-lg-11">
+                                    <h4>#{trip.name}</h4>
+
+                                    <div>
+                                        <span class="glyphicon glyphicon-globe"
+                                              style="margin-right: 15px"/>
+                                        #{trip.startLocation.name} (#{trip.startLocation.address.city}, #{trip.startLocation.address.country}) - #{trip.endLocation.name} (#{trip.endLocation.address.city}, #{trip.endLocation.address.country})
+                                    </div>
+                                    <div>
+                                        <span class="glyphicon glyphicon-time"
+                                              style="margin-right: 15px"/>
+                                        <h:outputText value="#{trip.startDate}"><f:convertDateTime
+                                                pattern="dd.MM.yyyy"/></h:outputText>
+                                        <h:outputText value="-"/>
+                                        <h:outputText value="#{trip.endDate}"><f:convertDateTime
+                                                pattern="dd.MM.yyyy"/></h:outputText>
+                                    </div>
+                                </div>
+                                <div class="col-md-1 col-lg-1">
+                                    <span class="glyphicon glyphicon-chevron-right"/>
+                                </div>
+                            </div>
+                        </h:commandLink>
+                    </ui:repeat>
+                </div>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>
