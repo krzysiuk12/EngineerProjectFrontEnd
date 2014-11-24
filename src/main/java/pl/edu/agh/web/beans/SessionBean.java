@@ -28,6 +28,7 @@ public class SessionBean {
     protected List<BaseMessage> infoMessages = new ArrayList<>();
     protected Long selectedLocationId;
     protected Long selectedTripId;
+    protected Long selectedTripDayId;
 
     //<editor-fold desc="Getters and Setters">
     public UserAccount getLoggedUserAccount() {
@@ -77,6 +78,15 @@ public class SessionBean {
     public void setSelectedTripId(Long selectedTripId) {
         this.selectedTripId = selectedTripId;
     }
+
+    public Long getSelectedTripDayId() {
+        return selectedTripDayId;
+    }
+
+    public void setSelectedTripDayId(Long selectedTripDayId) {
+        this.selectedTripDayId = selectedTripDayId;
+    }
+
     //</editor-fold>
 
     //<editor-fold desc="Services Getters and Setters">

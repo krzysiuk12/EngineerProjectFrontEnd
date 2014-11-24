@@ -33,7 +33,8 @@ public class ShowMyTripsListBean extends BaseBean {
     }
 
     public String goToTripDescriptionAction(Long id) {
-        return tryToNavigate(NavigationResults.LOG_IN_PAGE);
+        getSessionBean().setSelectedTripId(id);
+        return tryToNavigate(NavigationResults.SHOW_TRIP_DESCRIPTION_PAGE);
     }
-    
+
 }

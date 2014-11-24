@@ -2,6 +2,7 @@ package pl.edu.agh.domain.trips;
 
 
 import pl.edu.agh.domain.common.implementation.VersionedBaseObject;
+import pl.edu.agh.domain.locations.Location;
 
 import java.util.Date;
 import java.util.List;
@@ -71,6 +72,15 @@ public class TripDay extends VersionedBaseObject {
 
     public void setPlannedStartTime(Date plannedStartTime) {
         this.plannedStartTime = plannedStartTime;
+    }
+
+    public Location getStartLocation() {
+        return getLocations().get(0).getLocation();
+    }
+
+    public Location getEndLocation() {
+        int lastLocationNumber = getLocations().size() - 1;
+        return getLocations().get(lastLocationNumber).getLocation();
     }
 
 }

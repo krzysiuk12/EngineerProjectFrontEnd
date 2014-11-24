@@ -123,4 +123,11 @@ public class ServerPaths {
         return MY_TRIPS_SERVER_PATH;
     }
 
+    public static String getTripByIdRequestPath(Long id) {
+        return new StringBuilder(TRIPS_SERVER_PATH).append("/").append(id).toString();
+    }
+
+    public static String getTripDayByIdRequestPath(Long id) {
+        return new StringBuilder(TRIP_DAYS_SERVER_PATH).append("/").append(id).toString();
+    }
 }

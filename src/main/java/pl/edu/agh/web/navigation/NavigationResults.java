@@ -26,7 +26,9 @@ public enum NavigationResults {
     SHOW_TOP_RATED_LOCATIONS_PAGE("ShowTopRatedLocationsPage"),
 
     NEW_TRIP_PAGE("NewTripPage"),
-    SHOW_TRIPS_PAGE("ShowTripsPage");
+    SHOW_TRIPS_PAGE("ShowTripsPage"),
+    SHOW_TRIP_DESCRIPTION_PAGE("ShowTripDescriptionPage"),
+    SHOW_TRIP_DAY_DESCRIPTION_PAGE("ShowTripDayDescriptionPage");
 
     private final String navigation;
 

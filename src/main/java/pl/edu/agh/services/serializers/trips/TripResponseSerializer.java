@@ -10,24 +10,24 @@ import java.util.List;
 /**
  * Created by Krzysztof Kicinger on 2014-11-24.
  */
-public class TripsListSerializer extends ResponseSerializer {
+public class TripResponseSerializer extends ResponseSerializer {
 
-    private List<Trip> result;
+    private Trip result;
 
-    public TripsListSerializer() {
+    public TripResponseSerializer() {
     }
 
-    public TripsListSerializer(ResponseStatus status, List<ErrorMessages> errorMessage, List<Trip> result) {
+    public TripResponseSerializer(ResponseStatus status, List<ErrorMessages> errorMessage, Trip result) {
         super(status, errorMessage);
         this.result = result;
     }
 
     @Override
-    public List<Trip> getResult() {
+    public Trip getResult() {
         return result;
     }
 
-    public void setResult(List<Trip> result) {
+    public void setResult(Trip result) {
         this.result = result;
     }
 }

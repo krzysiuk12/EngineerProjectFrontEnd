@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.edu.agh.domain.locations.Location;
 import pl.edu.agh.domain.trips.Trip;
+import pl.edu.agh.domain.trips.TripDay;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +43,7 @@ public class DataCacheService {
     private List<Location> privateLocations = new ArrayList<>();
     private Location selectedLocation;
     private Trip selectedTrip;
+    private TripDay selectedTripDay;
 
     @Autowired
     public DataCacheService(UsersManagementService usersManagementService, LocationsManagementService locationsManagementService, TripsManagementService tripsManagementService) {
@@ -110,6 +112,27 @@ public class DataCacheService {
         this.myTrips = myTrips != null ? myTrips : new ArrayList<>();
     }
 
+    public Trip getSelectedTrip(Long id, String userToken) throws Exception {
+        if(selectedTrip == null) {
+            selectedTrip = tripsManagementService.getTripById(id, userToken);
+        }
+        return selectedTrip;
+    }
+
+    public void setSelectedTrip(Trip selectedTrip) {
+        this.selectedTrip = selectedTrip;
+    }
+
+    public TripDay getSelectedTripDay(Long id, String userToken) throws Exception {
+        if(selectedTripDay == null) {
+            selectedTripDay = tripsManagementService.getTripDayByIdAllData(id, userToken);
+        }
+        return selectedTripDay;
+    }
+
+    public void setSelectedTripDay(TripDay selectedTripDay) {
+        this.selectedTripDay = selectedTripDay;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Helper Methods">
@@ -124,6 +147,8 @@ public class DataCacheService {
     //<editor-fold desc="Refreshing Data">
     public void refreshRequestData() {
         setSelectedLocation(null);
+        setSelectedTrip(null);
+        setSelectedTripDay(null);
     }
 
     public void refreshSessionData(String token) throws Exception {
