@@ -40,14 +40,14 @@ public class LocationsManagementService extends BaseService {
         return (Location) parseResponse(rs);
     }
 
-    public boolean addNewLocation(String name, double latitude, double longitude, String city, String country, String token) throws Exception {
-        LocationRequestSerializer locationRequestSerializer = new LocationRequestSerializer(name, latitude, longitude, city, country);
+    public boolean addNewLocation(String name, String description, double latitude, double longitude, String street, String postalCode, String city, String country, String token) throws Exception {
+        LocationRequestSerializer locationRequestSerializer = new LocationRequestSerializer(name, description, latitude, longitude, street, postalCode, city, country);
         BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getAddNewLocationRequestPath(), token, locationRequestSerializer, BaseResponseSerializer.class);
         return testResponseCorrectness(rs);
     }
 
-    public boolean addNewPrivateLocation(String name, double latitude, double longitude, String city, String country, String token) throws Exception {
-        LocationRequestSerializer locationRequestSerializer = new LocationRequestSerializer(name, latitude, longitude, city, country);
+    public boolean addNewPrivateLocation(String name, String description, double latitude, double longitude, String street, String postalCode, String city, String country, String token) throws Exception {
+        LocationRequestSerializer locationRequestSerializer = new LocationRequestSerializer(name, description, latitude, longitude, street, postalCode, city, country);
         BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getAddNewPrivateLocationRequestPath(), token, locationRequestSerializer, BaseResponseSerializer.class);
         return testResponseCorrectness(rs);
     }
