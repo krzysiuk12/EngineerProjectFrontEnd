@@ -20,6 +20,9 @@ import java.util.List;
 @ViewScoped
 public class ShowAllLocationsBean extends BaseBean {
 
+    private static final int MAX_TOP_RATED_LOCATIONS = 10;
+
+    private boolean showAllLocations = true;
     private List<Location> locations;
     private Location selectedLocation;
     private Long selectedId;
@@ -39,7 +42,11 @@ public class ShowAllLocationsBean extends BaseBean {
 
     public List<Location> getLocations() {
         try {
-            locations = getSessionBean().getDataCacheService().getAllLocations();
+            if(isShowAllLocations()) {
+                locations = getSessionBean().getDataCacheService().getAllLocations();
+            } else {
+                locations = getTopRatedLocationList(getSessionBean().getDataCacheService().getTopRatedLocations());
+            }
         } catch (Exception ex) {
             processRequestException(ex);
         }
@@ -71,8 +78,12 @@ public class ShowAllLocationsBean extends BaseBean {
         this.selectedId = selectedId;
     }
 
-    public void processClickForMarker() {
-        System.out.println("HERE");
+    public boolean isShowAllLocations() {
+        return showAllLocations;
+    }
+
+    public void setShowAllLocations(boolean showAllLocations) {
+        this.showAllLocations = showAllLocations;
     }
 
     public void setMap(Map map) {
@@ -118,6 +129,24 @@ public class ShowAllLocationsBean extends BaseBean {
         }
         getSessionBean().setSelectedLocationId(getSelectedId());
         return tryToNavigate(NavigationResults.SHOW_LOCATION_DESCRIPTION_PAGE);
+    }
+
+    public String showTopRatedLocationsAction() {
+        refreshPageData();
+        setShowAllLocations(false);
+        setLocations(null);
+        return tryToNavigate(NavigationResults.RELOAD_PAGE);
+    }
+
+    public String showAllLocationsAction() {
+        refreshPageData();
+        setShowAllLocations(true);
+        setLocations(null);
+        return tryToNavigate(NavigationResults.RELOAD_PAGE);
+    }
+
+    private List<Location> getTopRatedLocationList(List<Location> fullList) {
+        return fullList.size() > MAX_TOP_RATED_LOCATIONS ? fullList.subList(0, MAX_TOP_RATED_LOCATIONS) : fullList;
     }
 
 }

@@ -20,6 +20,7 @@ public class SessionBean {
     private LocationsManagementService locationsManagementService = new LocationsManagementService();
     private TripsManagementService tripsManagementService = new TripsManagementService();
     private SessionManagementService sessionManagementService = new SessionManagementService();
+    private GoogleManagementService googleManagementService = new GoogleManagementService();
     private DataCacheService dataCacheService = new DataCacheService(getUsersManagementService(), getLocationsManagementService(), getTripsManagementService());
 
     private UserAccount loggedUserAccount;
@@ -145,6 +146,16 @@ public class SessionBean {
         this.tripsManagementService = tripsManagementService;
     }
 
+    public GoogleManagementService getGoogleManagementService() {
+        if(googleManagementService == null) {
+            googleManagementService = new GoogleManagementService();
+        }
+        return googleManagementService;
+    }
+
+    public void setGoogleManagementService(GoogleManagementService googleManagementService) {
+        this.googleManagementService = googleManagementService;
+    }
     //</editor-fold>
 
     //<editor-fold desc="Data Refreshing">
@@ -154,8 +165,8 @@ public class SessionBean {
         getDataCacheService().refreshRequestData();
     }
 
-    public void refreshSessionData() {
-
+    public void refreshSessionData(boolean refreshAllLocations, boolean refreshPrivateLocations, boolean refreshMyTrips) throws Exception {
+        getDataCacheService().refreshSessionData(refreshAllLocations, refreshPrivateLocations, refreshMyTrips, getUserToken());
     }
     //</editor-fold>
 }

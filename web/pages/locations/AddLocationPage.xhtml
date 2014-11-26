@@ -1,11 +1,110 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
-</html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:m="http://code.google.com/p/gmaps4jsf/"
+                xmlns:trip="http://tourtrip.com/facelets"
+                template="/pages/templates/MainPageTemplate.xhtml">
+
+    <ui:define name="MainContent">
+        <div class="theme-showcase" role="main">
+            <div class="jumbotron">
+                <trip:dangerAlert errorMessagesList="#{addNewLocationBean.errorMessages}"
+                                  rendered="#{!addNewLocationBean.errorMessageEmpty}"/>
+
+                <div class="row text-center">
+                    <h3><h:outputText value="#{p['AddNewLocation.Search.Header']}"/></h3>
+                </div>
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"/></span>
+                        <h:inputText class="form-control" value="#{addNewLocationBean.address}" title="Test"/>
+                    </div>
+                </div>
+                <div class="row text-center" style="margin-top: 20px">
+                    <h:commandLink styleClass="btn btn-lg btn-success" style="width: 400px; min-width: 150px"
+                                   action="#{addNewLocationBean.searchAction()}">
+                        #{p['AddNewLocation.Search.Button']}
+                    </h:commandLink>
+                </div>
+                <hr/>
+                <h:panelGroup rendered="#{addNewLocationBean.location ne null}">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <m:map width="100%" latitude="#{addNewLocationBean.location.latitude}"
+                                   longitude="#{addNewLocationBean.location.longitude}"
+                                   zoom="#{applicationBean.googleMapsDefaultZoom}"
+                                   enableScrollWheelZoom="true"
+                                   binding="#{addNewLocationBean.map}">
+                                <m:marker latitude="#{addNewLocationBean.location.latitude}"
+                                          longitude="#{addNewLocationBean.location.longitude}"
+                                          draggable="true">
+                                    <m:htmlInformationWindow htmlText="#{addNewLocationBean.location.name}"/>
+                                </m:marker>
+                            </m:map>
+                        </div>
+                        <div class="col-md-6 col-lg-6">
+                            <ul class="location-desc">
+                                <li>
+                                    <h3>#{o['Location.Name']}</h3>
+                                    <h:inputText styleClass="form-control" value="#{addNewLocationBean.location.name}"/>
+                                </li>
+                                <li>
+                                    <h3>#{o['Location.Description']}</h3>
+                                    <h:inputTextarea styleClass="form-control"
+                                                     value="#{addNewLocationBean.location.description}"/>
+                                </li>
+                                <li>
+                                    <h3>#{o['Location.Url']}</h3>
+                                    <h:inputText styleClass="form-control" value="#{addNewLocationBean.location.url}"/>
+                                </li>
+                                <li>
+                                    <h3>#{o['Location.Address']}</h3>
+
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{addNewLocationBean.location.address.street}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 col-lg-4">
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{addNewLocationBean.location.address.postalCode}"/>
+                                        </div>
+                                        <div class="col-md-8 col-lg-8">
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{addNewLocationBean.location.address.city}"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <h:inputText styleClass="form-control"
+                                                         value="#{addNewLocationBean.location.address.country}"/>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="checkbox">
+                                        <label>
+                                            <h:selectBooleanCheckbox styleClass="checkbox"
+                                                                     value="#{addNewLocationBean.location.usersPrivate}"/>
+
+                                            #{o['Location.UsersPrivate']}
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row text-center" style="margin-top: 20px">
+                        <h:commandLink styleClass="btn btn-lg btn-danger" style="width: 400px; min-width: 150px"
+                                       action="#{addNewLocationBean.addLocationAction()}">
+                            #{p['AddNewLocation.AddLocation.Button']}
+                        </h:commandLink>
+                    </div>
+                </h:panelGroup>
+            </div>
+        </div>
+    </ui:define>
+
+</ui:composition>

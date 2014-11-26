@@ -2,7 +2,7 @@
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:m="http://code.google.com/p/gmaps4jsf/"
-                xmlns:trip="http://tourtrip.com/facelets"
+                xmlns:trip="http://tourtrip.com/facelets" xmlns:f="http://java.sun.com/jsf/core"
                 template="/pages/templates/MainPageTemplate.xhtml">
 
     <ui:define name="MainContent">
@@ -20,6 +20,9 @@
                                   rendered="#{!showAllLocationsBean.errorMessageEmpty}"/>
 
                 <div class="row">
+                    <h3>#{p['ShowAllLocations.Header']}</h3>
+                </div>
+                <div class="row">
                     <m:map width="100%" latitude="#{showAllLocationsBean.selectedLocation.latitude}"
                            longitude="#{showAllLocationsBean.selectedLocation.longitude}" enableScrollWheelZoom="true"
                            binding="#{showAllLocationsBean.map}">
@@ -27,13 +30,9 @@
                 </div>
                 <div class="row">
                     <div class="buttonList text-center" style="margin-top: 20px;">
-                        <h:commandLink styleClass="firstButtonList btn btn-success btn-lg"
-                                       value="#{p['ShowAllLocations.Button.Search']}"/>
                         <h:commandLink styleClass="btn btn-warning btn-lg"
                                        action="#{showAllLocationsBean.goToShowDescription}"
                                        value="#{p['ShowAllLocations.Button.ShowDescription']}"/>
-                        <h:commandLink styleClass="btn btn-primary btn-lg"
-                                       value="#{p['ShowAllLocations.Button.ShowTopRated']}"/>
                     </div>
                 </div>
                 <h:inputText id="inputId" value="#{showAllLocationsBean.selectedId}" style="display: none"/>

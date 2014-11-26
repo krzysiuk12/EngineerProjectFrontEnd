@@ -18,6 +18,9 @@
             <div class="jumbotron">
                 <trip:dangerAlert errorMessagesList="#{showMyLocationsBean.errorMessages}"
                                   rendered="#{!showMyLocationsBean.errorMessageEmpty}"/>
+                <div class="row">
+                    <h3>#{p['ShowMyLocations.Header']}</h3>
+                </div>
                 <h:panelGroup rendered="#{showMyLocationsBean.mapRendered}">
                     <div class="row">
                         <m:map width="100%" enableScrollWheelZoom="true" binding="#{showMyLocationsBean.map}">

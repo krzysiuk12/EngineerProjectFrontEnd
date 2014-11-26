@@ -1,6 +1,7 @@
 package pl.edu.agh.services.serializers.locations;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import pl.edu.agh.domain.locations.Location;
 
 /**
  * Created by Krzysztof Kicinger on 2014-11-17.
@@ -10,8 +11,10 @@ public class LocationRequestSerializer {
 
     private String name;
     private String description;
+    private String url;
     private double latitude;
     private double longitude;
+    private Location.Status status;
     private String addressStreet;
     private String addressPostalCode;
     private String addressCity;
@@ -20,11 +23,13 @@ public class LocationRequestSerializer {
     public LocationRequestSerializer() {
     }
 
-    public LocationRequestSerializer(String name, String description, double latitude, double longitude, String addressStreet, String addressPostalCode, String addressCity, String addressCountry) {
+    public LocationRequestSerializer(String name, String description, String url, Location.Status status, double latitude, double longitude, String addressStreet, String addressPostalCode, String addressCity, String addressCountry) {
         this.name = name;
         this.description = description;
+        this.url = url;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.status = status;
         this.addressStreet = addressStreet;
         this.addressPostalCode = addressPostalCode;
         this.addressCity = addressCity;
@@ -37,6 +42,14 @@ public class LocationRequestSerializer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public double getLatitude() {
@@ -93,5 +106,13 @@ public class LocationRequestSerializer {
 
     public void setAddressPostalCode(String addressPostalCode) {
         this.addressPostalCode = addressPostalCode;
+    }
+
+    public Location.Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Location.Status status) {
+        this.status = status;
     }
 }

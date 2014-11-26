@@ -36,11 +36,11 @@ public class DataCacheService {
     private LocationsManagementService locationsManagementService;
     private TripsManagementService tripsManagementService;
 
-    private List<Trip> myTrips = new ArrayList<>();
-    private List<Location> allLocations = new ArrayList<>();
-    private List<Location> topRatedLocations = new ArrayList<>();
-    private List<Location> newestLocations = new ArrayList<>();
-    private List<Location> privateLocations = new ArrayList<>();
+    private List<Trip> myTrips;
+    private List<Location> allLocations;
+    private List<Location> topRatedLocations;
+    private List<Location> newestLocations;
+    private List<Location> privateLocations;
     private Location selectedLocation;
     private Trip selectedTrip;
     private TripDay selectedTripDay;
@@ -53,15 +53,35 @@ public class DataCacheService {
     }
 
     public void initializeCache(String token) throws Exception {
-        setAllLocations(locationsManagementService.getAllLocations(token));
-        setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
-        setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
-        setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
-        setMyTrips(tripsManagementService.getMyTripsList(token));
+        if(getAllLocations() == null) {
+            setAllLocations(locationsManagementService.getAllLocations(token));
+            setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
+            setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
+        }
+        if(getPrivateLocations() == null ) {
+            setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
+        }
+        if(getMyTrips() == null) {
+            setMyTrips(tripsManagementService.getMyTripsList(token));
+        }
+    }
+
+    public void reloadData(boolean refreshAllLocations, boolean refreshPrivateLocations, boolean refreshMyTrips, String token) throws Exception {
+        if(refreshAllLocations) {
+            setAllLocations(locationsManagementService.getAllLocations(token));
+            setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
+            setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
+        }
+        if(refreshPrivateLocations) {
+            setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
+        }
+        if(refreshMyTrips) {
+            setMyTrips(tripsManagementService.getMyTripsList(token));
+        }
     }
 
     //<editor-fold desc="Getter And Setters">
-    public List<Location> getAllLocations() throws Exception {
+    public List<Location> getAllLocations() {
         return allLocations;
     }
 
@@ -151,11 +171,9 @@ public class DataCacheService {
         setSelectedTripDay(null);
     }
 
-    public void refreshSessionData(String token) throws Exception {
+    public void refreshSessionData(boolean refreshAllLocations, boolean refreshPrivateLocations, boolean refreshMyTrips, String token) throws Exception {
         refreshRequestData();
-        setAllLocations(null);
-        setMyTrips(null);
-        initializeCache(token);
+        reloadData(refreshAllLocations, refreshPrivateLocations, refreshMyTrips, token);
     }
     //</editor-fold>
 
