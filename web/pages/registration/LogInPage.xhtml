@@ -12,12 +12,17 @@
         <div class="jumbotron">
             <trip:dangerAlert errorMessagesList="#{logInBean.errorMessages}" rendered="#{!logInBean.errorMessageEmpty}"/>
             <trip:infoAlert infoMessagesList="#{logInBean.infoMessages}" rendered="#{!logInBean.infoMessageEmpty}"/>
-            <div class="form-signin">
-                <h2 class="form-signin-header">#{p['LogInPage.Header']}</h2>
-                <trip:inputText label="#{p['LogInPage.InputText.Login']}" value="#{logInBean.login}" error="false" />
-                <trip:inputSecret label="#{p['LogInPage.InputSecret.Password']}" value="#{logInBean.password}" error="false" />
-                <h:commandButton styleClass="btn btn-lg btn-primary btn-block form-button"
-                                 value="#{p['LogInPage.Button.Label']}" action="#{logInBean.logInAction}"/>
+            <div class="row">
+                <div class="col-md-6 col-lg-6 text-center">
+                    <h:graphicImage value="/resources/images/Key.png"/>
+                </div>
+                <div class="col-md-6 col-lg-6">
+                    <h2 class="form-signin-header">#{p['LogInPage.Header']}</h2>
+                    <trip:inputText label="#{p['LogInPage.InputText.Login']}" value="#{logInBean.login}" error="false" />
+                    <trip:inputSecret label="#{p['LogInPage.InputSecret.Password']}" value="#{logInBean.password}" error="false" />
+                    <h:commandButton styleClass="btn btn-lg btn-primary btn-block" style="margin-top: 30px"
+                                     value="#{p['LogInPage.Button.Label']}" action="#{logInBean.logInAction}"/>
+                </div>
             </div>
         </div>
     </ui:define>

@@ -30,6 +30,7 @@ public class ShowTripDescriptionBean extends BaseBean {
     }
 
     public String goToTripDayDescription(Long tripDayId) {
+        refreshPageData();
         getSessionBean().setSelectedTripDayId(tripDayId);
         return tryToNavigate(NavigationResults.SHOW_TRIP_DAY_DESCRIPTION_PAGE);
     }

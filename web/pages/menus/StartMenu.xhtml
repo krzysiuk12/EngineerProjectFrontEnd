@@ -3,6 +3,10 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <ul class="nav navbar-nav pull-left">
+        <li><h:commandLink value="#{p['StartMenu.Home']}" action="#{startPageMenuBean.homeAction}"/></li>
+    </ul>
+
     <ul class="nav navbar-nav pull-right">
         <li><h:commandLink value="#{p['StartMenu.Buttons.LogIn.Label']}" action="#{startPageMenuBean.logInAction}"/></li>
         <li><h:commandLink value="#{p['StartMenu.Buttons.SignIn.Label']}" action="#{startPageMenuBean.signInAction}"/></li>

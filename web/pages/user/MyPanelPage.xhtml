@@ -21,7 +21,7 @@
                         <h:panelGroup rendered="#{myPanelBean.myTripsListRendered}">
                             <div class="list-group">
                                 <ui:repeat value="#{myPanelBean.myTrips}" var="myTrip">
-                                    <h:commandLink class="list-group-item text-left" action="#{myPanelBean.goToMyTripsAction(myTrip.id)}">
+                                    <h:commandLink class="list-group-item text-left" action="#{myPanelBean.goToTripDescriptionAction(myTrip.id)}">
                                         <span class="glyphicon glyphicon-globe" style="margin-right: 15px"></span>#{myTrip.name}
                                     </h:commandLink>
                                 </ui:repeat>

@@ -12,6 +12,9 @@
         <div class="jumbotron">
             <trip:dangerAlert errorMessagesList="#{signInBean.errorMessages}" rendered="#{!signInBean.errorMessageEmpty}"/>
             <div class="row">
+                <div class="col-md-6 col-lg-6 text-center" >
+                    <h:graphicImage value="/resources/images/SignIn.png"/>
+                </div>
                 <div class="col-md-6 col-lg-6">
                     <h2 class="form-signin-header">#{p['SignInPage.Header']}</h2>
                     <trip:inputText id="login" label="#{p['SignInPage.Login.Label']}" value="#{signInBean.login}" error="false" />
@@ -21,12 +24,16 @@
                     <trip:inputText id="firstName" label="#{p['SignInPage.FirstName.Label']}" value="#{signInBean.firstName}" error="false" />
                     <trip:inputText id="lastName" label="#{p['SignInPage.LastName.Label']}" value="#{signInBean.lastName}" error="false" />
                 </div>
-                <div class="col-md-6 col-lg-6" >
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-lg-3" />
+                <div class="col-md-6 col-lg-6" style="margin-top: 30px">
                     <h:commandButton styleClass="btn btn-lg btn-success btn-block form-button form-signin-button"
                                      value="#{p['SignInPage.Button.SignIn']}" action="#{signInBean.performSignInAction}"/>
                     <h:commandButton styleClass="btn btn-lg btn-primary btn-block form-button form-signin-button"
                                      value="#{p['SignInPage.Button.LogIn']}" action="#{signInBean.goToLogInPageAction}"/>
                 </div>
+                <div class="col-md-3 col-lg-3" />
             </div>
         </div>
     </ui:define>

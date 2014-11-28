@@ -77,7 +77,9 @@ public class MyPanelBean extends BaseBean {
     }
 
     public String goToTripDescriptionAction(Long id) {
-     return tryToNavigate(NavigationResults.LOG_IN_PAGE);
+        refreshPageData();
+        getSessionBean().setSelectedTripId(id);
+        return tryToNavigate(NavigationResults.SHOW_TRIP_DESCRIPTION_PAGE);
     }
 
     private List<Location> getPanelData(List<Location> locationLists) {

@@ -92,7 +92,6 @@
             <to-view-id>/pages/locations/ShowTopRatedLocationsPage.xhtml</to-view-id>
             <redirect />
         </navigation-case>
-
         <navigation-case>
             <from-outcome>NewTripPage</from-outcome>
             <to-view-id>/pages/trips/NewTripPage.xhtml</to-view-id>
@@ -104,16 +103,15 @@
             <redirect />
         </navigation-case>
         <navigation-case>
-            <from-outcome>ShowTripsPage</from-outcome>
+            <from-outcome>ShowTripDescriptionPage</from-outcome>
             <to-view-id>/pages/trips/ShowTripDescriptionPage.xhtml</to-view-id>
             <redirect />
         </navigation-case>
         <navigation-case>
-            <from-outcome>ShowTripsPage</from-outcome>
+            <from-outcome>ShowTripDayDescriptionPage</from-outcome>
             <to-view-id>/pages/trips/ShowTripDayDescriptionPage.xhtml</to-view-id>
             <redirect />
         </navigation-case>
-
     </navigation-rule>
     
 </faces-config>
