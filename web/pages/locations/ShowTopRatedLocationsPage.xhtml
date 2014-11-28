@@ -7,12 +7,16 @@
     <ui:define name="MainContent">
         <div class="theme-showcase" role="main">
             <div class="jumbotron">
-                <h2>#{p['ShowTopRatedLocations.Header']}</h2>
-
-                <div class="list-group">
-                    <ui:repeat value="#{showTopRatedLocationsList.locationList}" var="location">
-                        <h:commandLink class="list-group-item"
-                                       action="#{showTopRatedLocationsList.goToLocationDescriptionAction(location.id)}">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" style="margin-top: 40px">
+                        <h:graphicImage value="/resources/images/Star.png"/>
+                    </div>
+                    <div class="col-md-8 col-lg-8">
+                        <h2>#{p['ShowTopRatedLocations.Header']}</h2>
+                        <div class="list-group">
+                            <ui:repeat value="#{showTopRatedLocationsList.locationList}" var="location">
+                                <h:commandLink class="list-group-item"
+                                               action="#{showTopRatedLocationsList.goToLocationDescriptionAction(location.id)}">
                             <span class="text-left">
                                 <span class="glyphicon glyphicon-hand-right" style="margin-right: 15px"></span>
                                 #{location.name} (#{location.address.city}, #{location.address.country})
@@ -24,8 +28,10 @@
                                     </h:outputText>
                                 </span>
                             </span>
-                        </h:commandLink>
-                    </ui:repeat>
+                                </h:commandLink>
+                            </ui:repeat>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -63,6 +63,11 @@
             <redirect />
         </navigation-case>
         <navigation-case>
+            <from-outcome>UpdateLocationPage</from-outcome>
+            <to-view-id>/pages/locations/UpdateLocationPage.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
             <from-outcome>ShowMyLocationsPage</from-outcome>
             <to-view-id>/pages/locations/ShowMyLocationsPage.xhtml</to-view-id>
             <redirect />

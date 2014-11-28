@@ -1,6 +1,7 @@
 package pl.edu.agh.domain.trips;
 
 
+import org.codehaus.jackson.annotate.JsonBackReference;
 import pl.edu.agh.domain.common.implementation.VersionedBaseObject;
 import pl.edu.agh.domain.locations.Location;
 
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public class TripStep extends VersionedBaseObject {
 
+    @JsonBackReference("tripday-tripstep")
     private TripDay tripDay;
     private Location startLocation;
     private Location endLocation;

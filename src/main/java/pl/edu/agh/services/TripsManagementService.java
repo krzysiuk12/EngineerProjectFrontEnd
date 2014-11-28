@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.edu.agh.domain.trips.Trip;
 import pl.edu.agh.domain.trips.TripDay;
 import pl.edu.agh.exceptions.response.*;
+import pl.edu.agh.services.serializers.trips.TripDayResponseSerializer;
 import pl.edu.agh.services.serializers.trips.TripResponseSerializer;
 import pl.edu.agh.services.serializers.trips.TripsListResponseSerializer;
 import pl.edu.agh.web.navigation.ServerPaths;
@@ -27,7 +28,7 @@ public class TripsManagementService extends BaseService {
     }
 
     public TripDay getTripDayByIdAllData(Long id, String token) throws ZeroResultsException, AccessDeniedException, RequestDeniedException, UnknownErrorException, FormValidationError {
-        TripResponseSerializer rs = executeHttpGetRequest(ServerPaths.getTripByIdRequestPath(id), token, TripResponseSerializer.class);
+        TripDayResponseSerializer rs = executeHttpGetRequest(ServerPaths.getTripDayByIdAllDataRequestPath(id), token, TripDayResponseSerializer.class);
         return (TripDay) parseResponse(rs);
     }
 }

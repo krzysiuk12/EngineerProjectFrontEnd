@@ -1,14 +1,18 @@
 package pl.edu.agh.domain.trips;
 
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import pl.edu.agh.domain.common.implementation.VersionedBaseObject;
 import pl.edu.agh.domain.locations.Location;
 
 /**
  * Created by Krzysiu on 2014-09-14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TripDayLocation extends VersionedBaseObject {
 
+    @JsonBackReference("tripday-tripdaylocation")
     private TripDay tripDay;
     private Location location;
     private int ordinal;

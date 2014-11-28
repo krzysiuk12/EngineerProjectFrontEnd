@@ -55,6 +55,10 @@ public class ServerPaths {
         return getLocationByIdRequestPath(id);
     }
 
+    public static String getUpdateLocationRequestPath(Long id) {
+        return getLocationByIdRequestPath(id);
+    }
+
     public static String getAddCommentRequestPath(Long id) {
         return new StringBuilder(getLocationByIdRequestPath(id)).append("/comment").toString();
     }
@@ -129,5 +133,9 @@ public class ServerPaths {
 
     public static String getTripDayByIdRequestPath(Long id) {
         return new StringBuilder(TRIP_DAYS_SERVER_PATH).append("/").append(id).toString();
+    }
+
+    public static String getTripDayByIdAllDataRequestPath(Long id) {
+        return new StringBuilder(TRIP_DAYS_SERVER_PATH).append("/").append(id).append("/all").toString();
     }
 }

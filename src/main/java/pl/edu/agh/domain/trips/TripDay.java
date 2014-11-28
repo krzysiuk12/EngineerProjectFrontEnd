@@ -1,6 +1,8 @@
 package pl.edu.agh.domain.trips;
 
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+import org.codehaus.jackson.annotate.JsonManagedReference;
 import pl.edu.agh.domain.common.implementation.VersionedBaseObject;
 import pl.edu.agh.domain.locations.Location;
 
@@ -10,10 +12,13 @@ import java.util.List;
 /**
  * Created by Krzysiu on 2014-09-14.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TripDay extends VersionedBaseObject {
 
     private Trip trip;
+    @JsonManagedReference("tripday-tripdaylocation")
     private List<TripDayLocation> locations;
+    @JsonManagedReference("tripday-tripstep")
     private List<TripStep> tripSteps;
     private Date date;
     private int dayNumber;

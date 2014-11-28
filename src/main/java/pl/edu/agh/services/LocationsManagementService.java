@@ -63,6 +63,12 @@ public class LocationsManagementService extends BaseService {
         return testResponseCorrectness(rs);
     }
 
+    public boolean updateLocation(Long id, String name, String description, String url, Location.Status status, double latitude, double longitude, String street, String postalCode, String city, String country, String token) throws Exception {
+        LocationRequestSerializer locationRequestSerializer = new LocationRequestSerializer(name, description, url, status, latitude, longitude, street, postalCode, city, country);
+        BaseResponseSerializer rs = executeHttpPutRequest(ServerPaths.getUpdateLocationRequestPath(id), token, locationRequestSerializer, BaseResponseSerializer.class);
+        return testResponseCorrectness(rs);
+    }
+
     public boolean addLocationComment(Long id, Comment.Rating rating, String comment, String token) throws Exception {
         CommentRequestSerializer commentRequestSerializer = new CommentRequestSerializer(rating, comment);
         BaseResponseSerializer rs = executeHttpPostRequest(ServerPaths.getAddCommentRequestPath(id), token, commentRequestSerializer, BaseResponseSerializer.class);
