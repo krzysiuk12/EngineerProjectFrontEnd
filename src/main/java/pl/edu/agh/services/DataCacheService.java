@@ -53,29 +53,23 @@ public class DataCacheService {
     }
 
     public void initializeCache(String token) throws Exception {
-        if(getAllLocations() == null) {
-            setAllLocations(locationsManagementService.getAllLocations(token));
-            setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
-            setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
-        }
-        if(getPrivateLocations() == null ) {
-            setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
-        }
-        if(getMyTrips() == null) {
-            setMyTrips(tripsManagementService.getMyTripsList(token));
-        }
+        setAllLocations(locationsManagementService.getAllLocations(token));
+        setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
+        setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
+        setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
+        setMyTrips(tripsManagementService.getMyTripsList(token));
     }
 
     public void reloadData(boolean refreshAllLocations, boolean refreshPrivateLocations, boolean refreshMyTrips, String token) throws Exception {
-        if(refreshAllLocations) {
+        if (refreshAllLocations) {
             setAllLocations(locationsManagementService.getAllLocations(token));
             setTopRatedLocations(getSortedCollection(allLocations, LocationComparator.TOP_RATED));
             setNewestLocations(getSortedCollection(allLocations, LocationComparator.NEWEST));
         }
-        if(refreshPrivateLocations) {
+        if (refreshPrivateLocations) {
             setPrivateLocations(locationsManagementService.getAllPrivateLocations(token));
         }
-        if(refreshMyTrips) {
+        if (refreshMyTrips) {
             setMyTrips(tripsManagementService.getMyTripsList(token));
         }
     }
@@ -133,7 +127,7 @@ public class DataCacheService {
     }
 
     public Trip getSelectedTrip(Long id, String userToken) throws Exception {
-        if(selectedTrip == null) {
+        if (selectedTrip == null) {
             selectedTrip = tripsManagementService.getTripById(id, userToken);
         }
         return selectedTrip;
@@ -144,7 +138,7 @@ public class DataCacheService {
     }
 
     public TripDay getSelectedTripDay(Long id, String userToken) throws Exception {
-        if(selectedTripDay == null) {
+        if (selectedTripDay == null) {
             selectedTripDay = tripsManagementService.getTripDayByIdAllData(id, userToken);
         }
         return selectedTripDay;

@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by Krzysiu on 2014-05-30.
  */
-@JsonIgnoreProperties(ignoreUnknown = true, value = {"versionNumber", "token", "userGroup"})
+@JsonIgnoreProperties(ignoreUnknown = true, value = {"versionNumber", "lastModificationDate", "removalDate", "lastModificationByAccount", "removedByAccount", "token", "password", "userGroup"})
 public class UserAccount extends VersionedBaseObject {
 
     public enum Status {

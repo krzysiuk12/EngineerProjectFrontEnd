@@ -35,6 +35,7 @@ public class EditMyAccountBean extends BaseBean {
     }
 
     public String saveUserAccountAction() {
+        refreshPageData();
         if(StringTools.isNullOrEmpty(getUserAccount().getEmail())) {
             addErrorMessage(ErrorMessages.INVALID_USER_EMAIL);
         }
